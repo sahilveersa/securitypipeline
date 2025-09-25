@@ -18,13 +18,13 @@ steps:
     cd $ARTIFACT_DIR
     AUTOMATION_FILE="automation.yaml"
 
-    # Create automation file with proper URL formatting
+    # Create automation file
     cat <<EOF > $AUTOMATION_FILE
-    env:
-    contexts:
-      - name: '${{ parameters.appName }}'
-        urls:
-    EOF
+env:
+  contexts:
+    - name: '${{ parameters.appName }}'
+      urls:
+EOF
 
     # Add URLs from parameter to the automation file (comma separated)
     IFS=',' read -ra URLS <<< "${{ parameters.targetUrls }}"
@@ -44,54 +44,54 @@ steps:
         - name: 'ci-user'
           credentials:
             session: '/zap/wrk/session.json'
-        parameters:
-      failOnError: true
-      failOnWarning: false
-      progressToStdout: true
-    jobs:
-    EOF
+  parameters:
+    failOnError: true
+    failOnWarning: false
+    progressToStdout: true
+jobs:
+EOF
 
     # Add scan jobs based on scan type
     if [ "${{ parameters.scanType }}" == "baseline" ]; then
       cat <<EOF >> $AUTOMATION_FILE
-    - type: spider
+  - type: spider
     parameters:
       context: '${{ parameters.appName }}'
       user: 'ci-user'
       maxDuration: 5
-    - type: passiveScan-wait
-    EOF
+  - type: passiveScan-wait
+EOF
     else
       cat <<EOF >> $AUTOMATION_FILE
-     - type: spider
-      parameters:
+  - type: spider
+    parameters:
       context: '${{ parameters.appName }}'
       user: 'ci-user'
-      - type: passiveScan-wait
-      - type: activeScan
-      parameters:
+  - type: passiveScan-wait
+  - type: activeScan
+    parameters:
       context: '${{ parameters.appName }}'
       user: 'ci-user'
-    EOF
+EOF
     fi
 
     # Add reports configuration
     cat <<EOF >> $AUTOMATION_FILE
-    - type: report
+  - type: report
     parameters:
       template: 'traditional-json'
       reportDir: '/zap/wrk/'
       reportFile: 'zap_report_${{ parameters.appName }}_${{ parameters.scanType }}.json'
-    EOF
+EOF
 
     if [ "${{ parameters.reportTemplate }}" != "traditional-json" ]; then
       cat <<EOF >> $AUTOMATION_FILE
-    - type: report
+  - type: report
     parameters:
       template: '${{ parameters.reportTemplate }}'
       reportDir: '/zap/wrk/'
       reportFile: 'zap_report_${{ parameters.appName }}_${{ parameters.scanType }}'
-    EOF
+EOF
     fi
 
     echo "Generated Automation Plan:"

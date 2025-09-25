@@ -213,13 +213,13 @@ stages:
         baseUrl: $[ variables['${{ parameters.environment }}_admin_base'] ]
         paths: $(admin_paths)
       name: SetAdminUrls
-
-  - template: zap-template.yml
-    parameters:
-      targetUrls: $(FULL_URLS)
-      appName: 'admin'
-      scanType: ${{ parameters.scanType }}
-      reportTemplate: ${{ parameters.reportTemplate }}
+    
+    - template: zap-template.yml
+      parameters:
+        targetUrls: $(FULL_URLS)
+        appName: 'admin'
+        scanType: ${{ parameters.scanType }}
+        reportTemplate: ${{ parameters.reportTemplate }}
 
   - job: AgentScan
     displayName: "ZAP Scan - Agent"
@@ -249,11 +249,10 @@ stages:
         baseUrl: $[ variables['${{ parameters.environment }}_agent_base'] ]
         paths: $(agent_paths)
       name: SetAgentUrls
-
-  - template: zap-template.yml
-    parameters:
-      targetUrls: $(FULL_URLS)
-      appName: 'agent'
-      scanType: ${{ parameters.scanType }}
-      reportTemplate: ${{ parameters.reportTemplate }}
-
+    
+    - template: zap-template.yml
+      parameters:
+        targetUrls: $(FULL_URLS)
+        appName: 'agent'
+        scanType: ${{ parameters.scanType }}
+        reportTemplate: ${{ parameters.reportTemplate }}

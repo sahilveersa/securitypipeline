@@ -189,19 +189,22 @@ stages:
     displayName: "ZAP Scan - Admin"
     pool:
       vmImage: 'ubuntu-latest'
+    variables:
+      baseUrl: $[ variables['${{ parameters.environment }}_admin_base'] ]
+      paths: $(admin_paths)
     steps:
     - download: current
       artifact: PlaywrightSessionAdmin
-    
+
     - powershell: |
         Write-Host "=== DEBUG: Variable Resolution ==="
         Write-Host "Environment parameter: ${{ parameters.environment }}"
-        Write-Host "Base URL: $(baseUrl)"
-        Write-Host "Admin paths: $(paths)"
+        Write-Host "Base URL: $env:baseUrl"
+        Write-Host "Admin paths: $env:paths"
         Write-Host "================================="
         
-        $baseUrl = "$(baseUrl)"
-        $paths = "$(paths)"
+        $baseUrl = $env:baseUrl
+        $paths = $env:paths
         
         $pathArray = $paths -split ','
         $fullUrls = @()
@@ -230,8 +233,8 @@ stages:
         
         Write-Host "##vso[task.setvariable variable=ADMIN_URLS;isOutput=true]$fullUrlsString"
       env:
-        baseUrl: $[ variables['${{ parameters.environment }}_admin_base'] ]
-        paths: $(admin_paths)
+        baseUrl: $(baseUrl)
+        paths: $(paths)
       name: SetAdminUrls
       displayName: "Build Admin URLs"
     
@@ -252,6 +255,9 @@ stages:
     displayName: "ZAP Scan - Agent"
     pool:
       vmImage: 'ubuntu-latest'
+    variables:
+      baseUrl: $[ variables['${{ parameters.environment }}_agent_base'] ]
+      paths: $(agent_paths)
     steps:
     - download: current
       artifact: PlaywrightSessionAgent
@@ -259,12 +265,12 @@ stages:
     - powershell: |
         Write-Host "=== DEBUG: Variable Resolution ==="
         Write-Host "Environment parameter: ${{ parameters.environment }}"
-        Write-Host "Base URL: $(baseUrl)"
-        Write-Host "Agent paths: $(paths)"
+        Write-Host "Base URL: $env:baseUrl"
+        Write-Host "Agent paths: $env:paths"
         Write-Host "================================="
         
-        $baseUrl = "$(baseUrl)"
-        $paths = "$(paths)"
+        $baseUrl = $env:baseUrl
+        $paths = $env:paths
         
         $pathArray = $paths -split ','
         $fullUrls = @()
@@ -293,8 +299,8 @@ stages:
         
         Write-Host "##vso[task.setvariable variable=AGENT_URLS;isOutput=true]$fullUrlsString"
       env:
-        baseUrl: $[ variables['${{ parameters.environment }}_agent_base'] ]
-        paths: $(agent_paths)
+        baseUrl: $(baseUrl)
+        paths: $(paths)
       name: SetAgentUrls
       displayName: "Build Agent URLs"
     

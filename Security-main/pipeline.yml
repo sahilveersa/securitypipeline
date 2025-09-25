@@ -197,7 +197,17 @@ stages:
       artifact: PlaywrightSessionAdmin
     - bash: |
         # Combine base URL with paths
-        FULL_URLS=$(echo "$(admin_paths)" | tr ',' '\n' | sed 's/^[ \t]*//' | sed "s|^|$(baseUrl)|" | tr '\n' ',' | sed 's/,$//')
+        FULL_URLS=""
+        while IFS= read -r path; do
+          path=$(echo "$path" | xargs)
+          if [ -n "$path" ]; then
+            if [ -n "$FULL_URLS" ]; then
+              FULL_URLS="$FULL_URLS,"
+            fi
+            FULL_URLS="$FULL_URLS$(baseUrl)$path"
+          fi
+        done <<< "$(echo "$(admin_paths)" | tr ',' '\n')"
+        echo "##vso[task.setvariable variable=FULL_URLS]$FULL_URLS"
       name: SetUrls
     - template: zap-template.yml
       parameters:

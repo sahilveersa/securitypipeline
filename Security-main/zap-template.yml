@@ -10,8 +10,21 @@ parameters:
 
 steps:
   - script: |
+      echo "=== DEBUG: Parameter Values ==="
+      echo "targetUrls parameter: '${{ parameters.targetUrls }}'"
+      echo "appName parameter: '${{ parameters.appName }}'"
+      echo "scanType parameter: '${{ parameters.scanType }}'"
+      echo "reportTemplate parameter: '${{ parameters.reportTemplate }}'"
+      echo "================================"
+      
       echo "Starting ZAP Scan for ${{ parameters.appName }}..."
       echo "Target URLs: ${{ parameters.targetUrls }}"
+      
+      # Check if targetUrls is empty
+      if [ -z "${{ parameters.targetUrls }}" ]; then
+        echo "ERROR: targetUrls parameter is empty!"
+        exit 1
+      fi
       
       ARTIFACT_DIR="$(Build.ArtifactStagingDirectory)/zap-reports"
       mkdir -p $ARTIFACT_DIR
@@ -28,13 +41,29 @@ steps:
             urls:
       EOF
 
+      echo "=== DEBUG: Processing URLs ==="
       IFS=',' read -ra urls <<< "${{ parameters.targetUrls }}"
+      echo "Number of URLs found: ${#urls[@]}"
+      
+      url_count=0
       for url in "${urls[@]}"; do
         url=$(echo "$url" | xargs)
+        echo "Processing URL $((url_count+1)): '$url'"
         if [ -n "$url" ] && [[ "$url" =~ ^https?:// ]]; then
           echo "            - '$url'" >> $AUTOMATION_FILE
+          echo "  ✓ Added: $url"
+          ((url_count++))
+        else
+          echo "  ✗ Skipped (invalid): $url"
         fi
       done
+      
+      echo "Total valid URLs added: $url_count"
+      
+      if [ $url_count -eq 0 ]; then
+        echo "ERROR: No valid URLs were processed!"
+        exit 1
+      fi
 
       cat <<EOF >> $AUTOMATION_FILE
             authentication:
@@ -91,13 +120,22 @@ steps:
       EOF
       fi
 
-      echo "Generated Automation Plan:"
+      echo "=== Generated Automation Plan ==="
       cat $AUTOMATION_FILE
+      echo "================================="
 
       if [ "${{ parameters.appName }}" == "admin" ]; then
         cp $(Pipeline.Workspace)/PlaywrightSessionAdmin/admin-session.json session.json
       else
         cp $(Pipeline.Workspace)/PlaywrightSessionAgent/agent-session.json session.json
+      fi
+
+      echo "=== Session file check ==="
+      if [ -f "session.json" ]; then
+        echo "✓ Session file exists"
+        echo "Session file size: $(stat -c%s session.json) bytes"
+      else
+        echo "✗ Session file missing!"
       fi
 
       docker run --rm \
@@ -111,7 +149,7 @@ steps:
 
       echo "ZAP scan finished."
       ls -la
-    displayName: "Run ZAP Scan with Auth"
+    displayName: "Run ZAP Scan with Auth (Debug)"
 
   - publish: '$(Build.ArtifactStagingDirectory)/zap-reports'
     artifact: 'ZAP_Reports_${{ parameters.appName }}'

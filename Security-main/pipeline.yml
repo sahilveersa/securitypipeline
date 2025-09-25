@@ -193,30 +193,58 @@ stages:
     - download: current
       artifact: PlaywrightSessionAdmin
     - bash: |
-        FULL_URLS=""
-        echo "Base URL: $baseUrl"
+        echo "=== DEBUG: Variable Resolution ==="
+        echo "Environment parameter: ${{ parameters.environment }}"
+        echo "Base URL variable name: ${{ parameters.environment }}_admin_base"
+        echo "Base URL value: $baseUrl"
         echo "Admin paths: $paths"
-
-        for path in $(echo "$paths" | tr ',' '\n'); do
+        echo "================================="
+        
+        FULL_URLS=""
+        
+        # Split paths by comma and build URLs
+        IFS=',' read -ra path_array <<< "$paths"
+        echo "Number of paths found: ${#path_array[@]}"
+        
+        for path in "${path_array[@]}"; do
           path=$(echo "$path" | xargs)   # trim spaces
+          echo "Processing path: '$path'"
           if [ -n "$path" ]; then
             if [ -n "$FULL_URLS" ]; then
               FULL_URLS="$FULL_URLS,"
             fi
-            FULL_URLS="$FULL_URLS$baseUrl$path"
+            full_url="$baseUrl$path"
+            FULL_URLS="$FULL_URLS$full_url"
+            echo "  Added: $full_url"
           fi
         done
 
-        echo "Resolved FULL_URLS=$FULL_URLS"
-        echo "##vso[task.setvariable variable=FULL_URLS]$FULL_URLS"
+        echo "=== FINAL RESULT ==="
+        echo "FULL_URLS=$FULL_URLS"
+        echo "===================="
+        
+        # Validate that we have URLs
+        if [ -z "$FULL_URLS" ]; then
+          echo "ERROR: No URLs were generated!"
+          exit 1
+        fi
+        
+        # Set variable for next step - ADO specific syntax
+        echo "##vso[task.setvariable variable=ADMIN_URLS;isOutput=true]$FULL_URLS"
       env:
         baseUrl: $[ variables['${{ parameters.environment }}_admin_base'] ]
         paths: $(admin_paths)
       name: SetAdminUrls
     
+    - bash: |
+        echo "=== VERIFICATION STEP ==="
+        echo "ADMIN_URLS variable: $(SetAdminUrls.ADMIN_URLS)"
+        echo "========================="
+      displayName: "Verify URLs Variable"
+    
     - template: zap-template.yml
       parameters:
-        targetUrls: $(FULL_URLS)
+        targetUrls: '$(SetAdminUrls.ADMIN_URLS)'
         appName: 'admin'
         scanType: ${{ parameters.scanType }}
         reportTemplate: ${{ parameters.reportTemplate }}
@@ -229,30 +257,58 @@ stages:
     - download: current
       artifact: PlaywrightSessionAgent
     - bash: |
-        FULL_URLS=""
-        echo "Base URL: $baseUrl"
+        echo "=== DEBUG: Variable Resolution ==="
+        echo "Environment parameter: ${{ parameters.environment }}"
+        echo "Base URL variable name: ${{ parameters.environment }}_agent_base"
+        echo "Base URL value: $baseUrl"
         echo "Agent paths: $paths"
+        echo "================================="
+        
+        FULL_URLS=""
 
-        for path in $(echo "$paths" | tr ',' '\n'); do
+        # Split paths by comma and build URLs
+        IFS=',' read -ra path_array <<< "$paths"
+        echo "Number of paths found: ${#path_array[@]}"
+        
+        for path in "${path_array[@]}"; do
           path=$(echo "$path" | xargs)   # trim spaces
+          echo "Processing path: '$path'"
           if [ -n "$path" ]; then
             if [ -n "$FULL_URLS" ]; then
               FULL_URLS="$FULL_URLS,"
             fi
-            FULL_URLS="$FULL_URLS$baseUrl$path"
+            full_url="$baseUrl$path"
+            FULL_URLS="$FULL_URLS$full_url"
+            echo "  Added: $full_url"
           fi
         done
 
-        echo "Resolved FULL_URLS=$FULL_URLS"
-        echo "##vso[task.setvariable variable=FULL_URLS]$FULL_URLS"
+        echo "=== FINAL RESULT ==="
+        echo "FULL_URLS=$FULL_URLS"
+        echo "===================="
+        
+        # Validate that we have URLs
+        if [ -z "$FULL_URLS" ]; then
+          echo "ERROR: No URLs were generated!"
+          exit 1
+        fi
+        
+        # Set variable for next step - ADO specific syntax
+        echo "##vso[task.setvariable variable=AGENT_URLS;isOutput=true]$FULL_URLS"
       env:
         baseUrl: $[ variables['${{ parameters.environment }}_agent_base'] ]
         paths: $(agent_paths)
       name: SetAgentUrls
     
+    - bash: |
+        echo "=== VERIFICATION STEP ==="
+        echo "AGENT_URLS variable: $(SetAgentUrls.AGENT_URLS)"
+        echo "========================="
+      displayName: "Verify URLs Variable"
+    
     - template: zap-template.yml
       parameters:
-        targetUrls: $(FULL_URLS)
+        targetUrls: '$(SetAgentUrls.AGENT_URLS)'
         appName: 'agent'
         scanType: ${{ parameters.scanType }}
         reportTemplate: ${{ parameters.reportTemplate }}

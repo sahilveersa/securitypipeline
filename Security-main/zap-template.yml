@@ -7,111 +7,112 @@ parameters:
     type: string
   - name: reportTemplate
     type: string
+
 steps:
-- script: |
-    echo "Starting ZAP Scan for ${{ parameters.appName }}..."
-    echo "Target URLs: ${{ parameters.targetUrls }}"
-    
-    ARTIFACT_DIR="$(Build.ArtifactStagingDirectory)/zap-reports"
-    mkdir -p $ARTIFACT_DIR
-    cd $ARTIFACT_DIR
-    AUTOMATION_FILE="automation.yaml"
+  - script: |
+      echo "Starting ZAP Scan for ${{ parameters.appName }}..."
+      echo "Target URLs: ${{ parameters.targetUrls }}"
+      
+      ARTIFACT_DIR="$(Build.ArtifactStagingDirectory)/zap-reports"
+      mkdir -p $ARTIFACT_DIR
+      cd $ARTIFACT_DIR
+      AUTOMATION_FILE="automation.yaml"
 
-    # ========================================================================
-    # ZAP Automation Framework config
-    # ========================================================================
-    cat <<EOF > $AUTOMATION_FILE
-    env:
-      contexts:
-        - name: '${{ parameters.appName }}'
-          urls:
-    EOF
+      # ========================================================================
+      # ZAP Automation Framework config
+      # ========================================================================
+      cat <<EOF > $AUTOMATION_FILE
+      env:
+        contexts:
+          - name: '${{ parameters.appName }}'
+            urls:
+      EOF
 
-    IFS=',' read -ra urls <<< "${{ parameters.targetUrls }}"
-    for url in "${urls[@]}"; do
-      url=$(echo "$url" | xargs)
-      if [ -n "$url" ] && [[ "$url" =~ ^https?:// ]]; then
-        echo "            - '$url'" >> $AUTOMATION_FILE
+      IFS=',' read -ra urls <<< "${{ parameters.targetUrls }}"
+      for url in "${urls[@]}"; do
+        url=$(echo "$url" | xargs)
+        if [ -n "$url" ] && [[ "$url" =~ ^https?:// ]]; then
+          echo "            - '$url'" >> $AUTOMATION_FILE
+        fi
+      done
+
+      cat <<EOF >> $AUTOMATION_FILE
+            authentication:
+              method: manual
+            users:
+              - name: 'ci-user'
+                credentials:
+                  session: '/zap/wrk/session.json'
+        parameters:
+          failOnError: true
+          failOnWarning: false
+          progressToStdout: true
+      jobs:
+      EOF
+
+      if [ "${{ parameters.scanType }}" == "baseline" ]; then
+        cat <<EOF >> $AUTOMATION_FILE
+        - type: spider
+          parameters:
+            context: '${{ parameters.appName }}'
+            user: 'ci-user'
+            maxDuration: 5
+        - type: passiveScan-wait
+      EOF
+      else
+        cat <<EOF >> $AUTOMATION_FILE
+        - type: spider
+          parameters:
+            context: '${{ parameters.appName }}'
+            user: 'ci-user'
+        - type: passiveScan-wait
+        - type: activeScan
+          parameters:
+            context: '${{ parameters.appName }}'
+            user: 'ci-user'
+      EOF
       fi
-    done
 
-    cat <<EOF >> $AUTOMATION_FILE
-          authentication:
-            method: manual
-          users:
-            - name: 'ci-user'
-              credentials:
-                session: '/zap/wrk/session.json'
-      parameters:
-        failOnError: true
-        failOnWarning: false
-        progressToStdout: true
-    jobs:
-    EOF
-
-    if [ "${{ parameters.scanType }}" == "baseline" ]; then
       cat <<EOF >> $AUTOMATION_FILE
-      - type: spider
-        parameters:
-          context: '${{ parameters.appName }}'
-          user: 'ci-user'
-          maxDuration: 5
-      - type: passiveScan-wait
-    EOF
-    else
-      cat <<EOF >> $AUTOMATION_FILE
-      - type: spider
-        parameters:
-          context: '${{ parameters.appName }}'
-          user: 'ci-user'
-      - type: passiveScan-wait
-      - type: activeScan
-        parameters:
-          context: '${{ parameters.appName }}'
-          user: 'ci-user'
-    EOF
-    fi
+        - type: report
+          parameters:
+            template: 'traditional-json'
+            reportDir: '/zap/wrk/'
+            reportFile: 'zap_report_${{ parameters.appName }}_${{ parameters.scanType }}.json'
+      EOF
 
-    cat <<EOF >> $AUTOMATION_FILE
-      - type: report
-        parameters:
-          template: 'traditional-json'
-          reportDir: '/zap/wrk/'
-          reportFile: 'zap_report_${{ parameters.appName }}_${{ parameters.scanType }}.json'
-    EOF
+      if [ "${{ parameters.reportTemplate }}" != "traditional-json" ]; then
+        cat <<EOF >> $AUTOMATION_FILE
+        - type: report
+          parameters:
+            template: '${{ parameters.reportTemplate }}'
+            reportDir: '/zap/wrk/'
+            reportFile: 'zap_report_${{ parameters.appName }}_${{ parameters.scanType }}'
+      EOF
+      fi
 
-    if [ "${{ parameters.reportTemplate }}" != "traditional-json" ]; then
-      cat <<EOF >> $AUTOMATION_FILE
-      - type: report
-        parameters:
-          template: '${{ parameters.reportTemplate }}'
-          reportDir: '/zap/wrk/'
-          reportFile: 'zap_report_${{ parameters.appName }}_${{ parameters.scanType }}'
-    EOF
-    fi
+      echo "Generated Automation Plan:"
+      cat $AUTOMATION_FILE
 
-    echo "Generated Automation Plan:"
-    cat $AUTOMATION_FILE
+      if [ "${{ parameters.appName }}" == "admin" ]; then
+        cp $(Pipeline.Workspace)/PlaywrightSessionAdmin/admin-session.json session.json
+      else
+        cp $(Pipeline.Workspace)/PlaywrightSessionAgent/agent-session.json session.json
+      fi
 
-    if [ "${{ parameters.appName }}" == "admin" ]; then
-      cp $(Pipeline.Workspace)/PlaywrightSessionAdmin/admin-session.json session.json
-    else
-      cp $(Pipeline.Workspace)/PlaywrightSessionAgent/agent-session.json session.json
-    fi
+      docker run --rm \
+        -v $(pwd):/zap/wrk/:rw \
+        --user root \
+        ghcr.io/zaproxy/zaproxy:stable \
+        zap.sh -cmd \
+        -addonupdate \
+        -addoninstall reports \
+        -autorun /zap/wrk/$AUTOMATION_FILE
 
-    docker run --rm \
-      -v $(pwd):/zap/wrk/:rw \
-      --user root \
-      ghcr.io/zaproxy/zaproxy:stable \
-      zap.sh -cmd \
-      -addonupdate \
-      -addoninstall reports \
-      -autorun /zap/wrk/$AUTOMATION_FILE
+      echo "ZAP scan finished."
+      ls -la
+    displayName: "Run ZAP Scan with Auth"
 
-    echo "ZAP scan finished."
-    ls -la
-  displayName: "Run ZAP Scan with Auth"
-
-- publish: '$(Build.ArtifactStagingDirectory)/zap-reports'
-  artifact: 'ZAP_Reports_${{ parameters.appName }}'
-  displayName: 'Publish ZAP Scan Reports'
+  - publish: '$(Build.ArtifactStagingDirectory)/zap-reports'
+    artifact: 'ZAP_Reports_${{ parameters.appName }}'
+    displayName: 'Publish ZAP Scan Reports'

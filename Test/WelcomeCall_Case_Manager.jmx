@@ -1,0 +1,2252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Engagement Platform WelcomeCall_Claim_Manager Test Plan">
+      <stringProp name="TestPlan.comments">This test plan was created by the BlazeMeter converter v.${project.version}. Please contact support@blazemeter.com for further support.</stringProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="URL" elementType="Argument">
+            <stringProp name="Argument.name">URL</stringProp>
+            <stringProp name="Argument.value">qaapi</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="UATURL" elementType="Argument">
+            <stringProp name="Argument.name">UATURL</stringProp>
+            <stringProp name="Argument.value">uatapi</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">x-tenantid</stringProp>
+            <stringProp name="Header.value">3607</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">content-type</stringProp>
+            <stringProp name="Header.value">application/json</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Authorization</stringProp>
+            <stringProp name="Header.value"> Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkpZaEFjVFBNWl9MWDZEQmxPV1E3SG4wTmVYRSIsImtpZCI6IkpZaEFjVFBNWl9MWDZEQmxPV1E3SG4wTmVYRSJ9.eyJhdWQiOiJhcGk6Ly9jOGMwZWIyOS1kN2M0LTRmZTgtODZmOC1kMzE5M2ZlY2VkMjAiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8yMTNjZTJkZC0zNzlkLTQ1NjUtYWRiNy04MjhiNWQ5NmUwMzEvIiwiaWF0IjoxNzU2OTcyMDg1LCJuYmYiOjE3NTY5NzIwODUsImV4cCI6MTc1Njk3NzAyNSwiYWNyIjoiMSIsImFpbyI6IkFaUUFhLzhaQUFBQThVR3JDdWJEZ0ppa2xzNTN1dGEwVW9iSCt2Y1FMTHdVU3lrbkRZVUFGY280K0ZpeGdGbUpXZmN4RE1rUkJwZklkNEtYbzh5bHkzSHdmQ1RvZ29MWm1WaU83a1g0eCtYMnpTVENNTU1jOE9tMVp2L05scW1DMHpOTVpYT0RtTmpZa3ZxeG1mdDlHaHowQ1pwd2U4UnRjOTZ2eXVhUFkxSEhVSFNVK1lvMzA5bmt6K0hrK1RpZWtnc1lZdm81d3pWZCIsImFtciI6WyJwd2QiLCJtZmEiXSwiYXBwaWQiOiJjOGMwZWIyOS1kN2M0LTRmZTgtODZmOC1kMzE5M2ZlY2VkMjAiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlRoYXJlamEiLCJnaXZlbl9uYW1lIjoiQWJoaW5hdiIsImlwYWRkciI6IjEyMi4xNjIuMTQ3LjQwIiwibmFtZSI6IkFiaGluYXYgVGhhcmVqYShWZWVyc2EpIiwib2lkIjoiMGIzZDhhOGEtZDdiNi00M2ExLThiOGQtZTg2Yzk1ZTg5M2JkIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTQxMzY2NTQ3MzQtMjE5MjgyMzk4MC0xNjY1ODYxODgwLTU2NzEiLCJyaCI6IjEuQVhFQjNlSThJWjAzWlVXdHQ0S0xYWmJnTVNucndNakUxLWhQaHZqVEdUX3M3U0J4QVdKeEFRLiIsInNjcCI6ImFwaV9hY2Nlc3MiLCJzaWQiOiIwMDg5YWE0OS1hYmEwLTcwMmQtZjc1Yi01MzBkM2JlOWNiZTEiLCJzdWIiOiJnQkRONHFEbE5OU1B5YnRyUW50TG1UZ2NBYV92TURCNllib2RtN1U5RGZzIiwidGlkIjoiMjEzY2UyZGQtMzc5ZC00NTY1LWFkYjctODI4YjVkOTZlMDMxIiwidW5pcXVlX25hbWUiOiJhYmhpbmF2LnRoYXJlamFAbmVvdmFuY2UuY29tIiwidXBuIjoiYWJoaW5hdi50aGFyZWphQG5lb3ZhbmNlLmNvbSIsInV0aSI6Im1FeEVqTW5KNkV5Njlka0NQR0o0QUEiLCJ2ZXIiOiIxLjAiLCJ4bXNfZnRkIjoieWgwSzdJU0c1TUFrTTV3emMwWEViTXYyczFJMW5QYWcya1FRUmxDTDFhNEJkWE4zWlhOME15MWtjMjF6In0.LzU534vCsyeP9fUdFcYhqUvN341-dhpJX-a7YMW49ev1e9HNqVeUwwJoM4nU4AKKfpGPDmoS6L7eewo-8I80pYDPjfjxlquORSvLwCXVKDSX6ZZSVWjtD6yfWnClI8-CHX6oMPr5oHEF2l9XS_xFzxrUzh0d0Fx1koZ7mybI5ZqLjgEVlOc-40LERYhLKhy5Vi68zQJoLwFPj8xRGaE02AxAQgRitKh_8JSMDf2m6XlE7eY0rRmwqZoodzLBrY5ZY4aU1439YhzYFwEhil9ppKQzrgzHAUhjC_A6e33XYx7xWxFGIgadJNP16o_RzHWoYbwMDmPt0XAcPAdgmmi_6g</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <stringProp name="HTTPSampler.domain">${URL}.app-np.neovance.com</stringProp>
+        <stringProp name="HTTPSampler.protocol">https</stringProp>
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+        <boolProp name="clearEachIteration">false</boolProp>
+        <boolProp name="useExpires">false</boolProp>
+        <boolProp name="CacheManager.controlledByThread">false</boolProp>
+      </CacheManager>
+      <hashTree/>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+        <collectionProp name="CookieManager.cookies"/>
+        <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+      </CookieManager>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </Arguments>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Create_WelcomeCall_Claim_Manager_Case_with_provider" enabled="true">
+        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
+        <longProp name="ThreadGroup.duration">150</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="LayoutProvider" enabled="true">
+          <stringProp name="HTTPSampler.port">0</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">api/entity-management/v3/layout/paginated?entityId=2143&amp;size=50000&amp;defaultValue=true</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">4226.8</stringProp>
+            <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ProviderEntityID" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">ProviderEntityID</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[0].parent_entity.entity_id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">NOT_found</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ProviderViewLayoutID" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">ProviderLayoutID</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[0].id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">NOT_found</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Providers List" enabled="true">
+          <stringProp name="HTTPSampler.port">0</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/providers_view</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;2143&quot;,&quot;select&quot;:[&quot;Provider ID&quot;,&quot;First Name&quot;,&quot;Last Name&quot;,&quot;Preferred Name&quot;,&quot;Phone Number&quot;,&quot;Fax Number&quot;,&quot;Email&quot;,&quot;NPI Number&quot;,&quot;Tax ID&quot;,&quot;State License Number&quot;,&quot;PTAN&quot;,&quot;Specialty&quot;,&quot;Exteranl ID&quot;,&quot;Legacy ID&quot;],&quot;page&quot;:0,&quot;size&quot;:25,&quot;related_entities&quot;:{},&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;layout_id&quot;:${ProviderLayoutID}}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">4226.8</stringProp>
+            <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ProviderRecodID" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">ProviderRecodID</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[0].id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">NOT_found</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ViewProviderID" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">ViewProviderID</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[0].id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">NOT_found</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Provider Id extractor(e.gPR-1000365)" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">Provider Id extractor(e.gPR-1000365)</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[0][&apos;Provider ID&apos;]</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">Not-Found</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="WelcomeCall_Case_Manager">
+          <stringProp name="ForeachController.inputVal">Provider Id extractor(e.gPR-1000365)</stringProp>
+          <stringProp name="ForeachController.returnVal">variable</stringProp>
+          <boolProp name="ForeachController.useSeparator">true</boolProp>
+        </ForeachController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateInteractionButton">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/delivery/v1/communications/save/call-interaction?userId=1387</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="InteractionID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">InteractionID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NOT_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="InteractionCommunicaitionID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">InteractionCommunicaitionID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.communication_id </stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NOT_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Interactionpage">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/communication/${InteractionID}</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;entity_name&quot;:&quot;communication&quot;,&quot;page&quot;:0,&quot;size&quot;:1,&quot;select&quot;:[&quot;communication_id&quot;,&quot;users&quot;,&quot;created_at&quot;,&quot;cases&quot;,&quot;communication_cases&quot;,&quot;programs&quot;,&quot;category_communication_type&quot;,&quot;products&quot;],&quot;related_entities&quot;:{&quot;users&quot;:{&quot;select&quot;:[&quot;first_name&quot;,&quot;last_name&quot;,&quot;email&quot;]},&quot;category_communication_type&quot;:{&quot;select&quot;:[&quot;name&quot;]}}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Select Program" enabled="true">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/core/programs?enabled=true</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Select Program" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">Program</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.operational_team_name==&apos;Teva Shared Solutions for Biosimilars&apos;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+              <stringProp name="TestPlan.comments">Teva Shared Solutions for Biosimilars</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Product" enabled="true">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/core/programs/${Program}/products</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="selectProdcutName" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">serviceIdProdcutName</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$[?(@.trademarked_name==&quot;TRUXIMA®&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+              <stringProp name="TestPlan.comments">General Inquriy  product</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Case-Definition" enabled="true">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/core/programs/${Program}/products/${serviceIdProdcutName}/services</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID Clinical inquiry " enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">serviceIdClinicainquiry</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$[?(@.service_name==&quot;Clinical Inquiry&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Clinical inquiry </stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID Welcome Call" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">serviceIdWelcome Call</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$[?(@.service_name==&quot;Welcome Call&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Clinical inquiry </stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID Access Referral" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">serviceIdAccessReferral</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$[?(@.service_name==&apos;Access Referral&apos;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Access Referral</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID Benefit Verification" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">serviceIdBenefit Verification</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$[?(@.service_name==&quot;Benefit Verification&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Access Referral</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID Claim Support&quot; " enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">serviceId_Claim_Support</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$[?(@.service_name==&quot;Claim Support&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Access Referral</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceIDPA Standard" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">serviceIdPA Standard</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$[?(@.service_name==&quot;Prior Authorization&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">PA Appeal</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID PA Appeal" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">serviceIdPA Appeal</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$[?(@.service_name==&quot;PA Appeal&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">PA Standard</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID Training" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">serviceIdTraining</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$[?(@.service_name==&quot;Training&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">SP Triage</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceIDReportable Incident" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">serviceIdReportable Incident</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$[?(@.service_name==&quot;Reportable Incident&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">SP Triage</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID General Inquiry" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">serviceIdGeneral Inquiry</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$[?(@.service_name==&quot;General Inquiry&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">General Inquiry</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID Clinical Inquiry" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">serviceIdClinical Inquiry</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$[?(@.service_name==&quot;Clinical Inquiry&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Clinical Inquiry</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID SP Triage" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">serviceIdSP Triage</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$[?(@.service_name==&quot;SP Triage&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">SP Triage</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID Copay Enrollment" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">serviceIdCopay Enrollment</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$[?(@.service_name==&quot;Copay Enrollment&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Copay Enrollment</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate Response Code 200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">1</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="definition workflow" enabled="true">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v1/process/get/definitions?page=0&amp;size=100</stringProp>
+            <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;search_criteria&quot;: [&#xd;
+    {&#xd;
+      &quot;search_key&quot;: &quot;PROGRAM_ID&quot;,&#xd;
+      &quot;search_value&quot;: [&#xd;
+        &quot;${Program}&quot;&#xd;
+      ],&#xd;
+      &quot;operator&quot;: &quot;EQUALS&quot;&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;search_key&quot;: &quot;SERVICE_ID&quot;,&#xd;
+      &quot;search_value&quot;: [&#xd;
+        &quot;${serviceIdClinicainquiry}&quot;,&#xd;
+        &quot;${serviceIdAccessReferral}&quot;,&#xd;
+        &quot;${serviceIdGeneral Inquiry}&quot;,&#xd;
+        &quot;${serviceIdBenefit Verification}&quot;,&#xd;
+        &quot;${serviceIdReportable Incident}&quot;,&#xd;
+        &quot;${serviceIdCopay Enrollment}&quot;,&#xd;
+        &quot;${serviceIdPA Standard}&quot;,&#xd;
+        &quot;${serviceId_Claim_Support}&quot;,&#xd;
+        &quot;${serviceIdWelcome Call}&quot;&#xd;
+        &#xd;
+        &#xd;
+        ],&#xd;
+      &quot;operator&quot;: &quot;EQUALS&quot;&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;search_key&quot;: &quot;INDEPENDENT&quot;,&#xd;
+      &quot;search_value&quot;: [&#xd;
+        &quot;true&quot;&#xd;
+      ],&#xd;
+      &quot;operator&quot;: &quot;EQUALS&quot;&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;search_key&quot;: &quot;RECORD_STATUS&quot;,&#xd;
+      &quot;search_value&quot;: [&#xd;
+        &quot;ACTIVE&quot;&#xd;
+      ],&#xd;
+      &quot;operator&quot;: &quot;EQUALS&quot;&#xd;
+    }&#xd;
+  ]&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID Welcome Call" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameIdWelcome Call</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;Welcome Call&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Clinical inquiry </stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID Access Referral" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NamedAccess Referral</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;Access Referral&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Access Referral</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID Benefit Verification" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameIdBenefit Verification</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;Benefit Verification&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Access Referral</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceIDPA Standard" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameIdPA Standard</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;PA Standard&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">PA Appeal</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID PA Appeal" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameIdPA Appeal</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;PA Appeal&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">PA Standard</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID WC Nurse" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameIdWC Nurse</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;WC Nursel&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">WC Nurse</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID Training" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameIdTraining</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;Training&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">SP Triage</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceIDReportable Incident" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameIdReportable Incident</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;Reportable Incident&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">SP Triage</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID General Inquiry" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameIdGeneral Inquiry</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;General Inquiry&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">General Inquiry</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID SP Triage" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameIdSP Triage</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;SP Triage&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">SP Triage</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="NameIdCopay Enrollment_Status_id" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameIdCopay_Enrollment_Status_id</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name == &apos;Copay Enrollment&apos;)].definition.processVariables.inherited_variables.case_status_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Copay Enrollment</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID Copay Enrollment" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameIdCopay Enrollment</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;Copay Enrollment&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Copay Enrollment</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate Response Code 200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">1</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID WC Case Manager" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameIdWC Case Manager</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;WC Case Manager&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">WC Case Manager</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Name__WelcomeCall_sub_service_id" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">Name__WelcomeCall_sub_service_id</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name == &apos;WC Case Manager&apos;)].definition.processVariables.inherited_variables.sub_service_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Clinical inquiry </stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Name_WelcomeCall_CaseManager_serviceID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">Name__WelcomeCall_serviceID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name == &apos;WC Case Manager&apos;)].definition.processVariables.inherited_variables.service_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Clinical inquiry </stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Name__WelcomeCall_variables.case_status_id" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">Name__WelcomeCall_variables.case_status_id</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name == &apos;WC Case Manager&apos;)].definition.processVariables.inherited_variables.case_status_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Clinical inquiry </stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ServiceID Claim Support&quot; " enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameId_Claim_Support</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;Claim Support&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Access Referral</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Name Case_Status_id_Referral_CaseStatus_id" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">Name_Claim_supportl_CaseStatus_id</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name == &apos;Claim Support&apos;)].definition.processVariables.inherited_variables.case_status_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1 </stringProp>
+              <stringProp name="TestPlan.comments">Clinical inquiry </stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Name_Claim_Support_sub_serviceID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">Name_Claim_Support_sub_serviceID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name == &apos;Claim Support&apos;)].definition.processVariables.inherited_variables.sub_service_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Clinical inquiry </stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="nameID_Clinical_Inquiry" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameId_Clinical_inquiry</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;Clinical Inquiry&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Clinical inquiry </stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="nameID Clinical inquiry_case_status_id" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameIdClinical inquiry_case_status_id</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name == &apos;Clinical Inquiry&apos;)].definition.processVariables.inherited_variables.case_status_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Clinical inquiry </stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Name AR SOC Referral" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">nameARSOCReferral</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;AR SOC Referral&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Clinical inquiry </stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Name AR SOC ReferralCaseStatus_id" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">nameARSOCReferralstatus_id</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name == &apos;AR SOC Referral&apos;)].definition.processVariables.inherited_variables.case_status_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1 </stringProp>
+              <stringProp name="TestPlan.comments">Clinical inquiry </stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Name AR SOC Referralsub_serviceID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameARSOCReferralsub_serviceID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name == &apos;AR SOC Referral&apos;)].definition.processVariables.inherited_variables.sub_service_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">Clinical inquiry </stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="NameIdPA Standard_case_status_id" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameIdPA_Standard_case_status_id</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name == &apos;PA Standard&apos;)].definition.processVariables.inherited_variables.case_status_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">PA Appeal</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="NameIdPA Standard_sub_service_id" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">NameIdPA Standard_sub_service_id</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name == &apos;PA Standard&apos;)].definition.processVariables.inherited_variables.sub_service_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="TestPlan.comments">PA_Standard</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="RequesterView" enabled="true">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/requestor_view</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;entity_name&quot;:&quot;requestor_view&quot;,&quot;select&quot;:[&quot;name&quot;,&quot;record_id&quot;,&quot;record_key&quot;,&quot;entity_type&quot;],&quot;page&quot;:0,&quot;size&quot;:1,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;field_name&quot;:&quot;record_key&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[&quot;PR-1000565&quot;]}]}]}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ProviderRequesterID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">ProviderRequesterID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[0].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NOT_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ProviderRecordID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">ProviderRecordID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[0].record_id </stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NOT_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate Response Code 200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">1</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SaveRequesterDetails with other " enabled="true">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/communication/${InteractionID}</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;meta_data&quot;:{&quot;entity_name&quot;:&quot;communication&quot;,&quot;embedded&quot;:[&quot;users&quot;,&quot;programs&quot;,&quot;category_communication_type&quot;,&quot;products&quot;,&quot;requestor&quot;]},&quot;data&quot;:{&quot;users&quot;:{&quot;id&quot;:1387},&quot;category_communication_type&quot;:{&quot;id&quot;:1133},&quot;programs&quot;:{&quot;id&quot;:1},&quot;products&quot;:{&quot;id&quot;:${serviceIdProdcutName}},&quot;requestor&quot;:${ProviderRequesterID}}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate Response Code 200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">1</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateNewCase__WelcomeCall_CaseManager">
+            <stringProp name="TestPlan.comments">Prior Authorization</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v1/process/${NameIdWC Case Manager}/instance</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;flow_meta_data&quot;: {&#xd;
+    &quot;process_definition_id&quot;: ${NameIdWC Case Manager},&#xd;
+    &quot;communication_id&quot;: &quot;${InteractionID}&quot;&#xd;
+  },&#xd;
+  &quot;meta_data&quot;: {&#xd;
+    &quot;entity_name&quot;: &quot;case&quot;,&#xd;
+    &quot;embedded&quot;: [&#xd;
+      &quot;service_id&quot;,&#xd;
+      &quot;record_status&quot;,&#xd;
+      &quot;show_mi_popup&quot;,&#xd;
+      &quot;case_status_id&quot;,&#xd;
+      &quot;sub_service_id&quot;,&#xd;
+      &quot;success_popup_text&quot;,&#xd;
+      &quot;success_popup_button_text&quot;,&#xd;
+      &quot;programs&quot;,&#xd;
+      &quot;c_provider&quot;,&#xd;
+      &quot;patient&quot;,&#xd;
+      &quot;products&quot;,&#xd;
+      &quot;requestor&quot;,&#xd;
+      &quot;users&quot;,&#xd;
+      &quot;case_summary&quot;,&#xd;
+      &quot;c_case_documents_c_cases&quot;,&#xd;
+      &quot;intake_channel_id&quot;,&#xd;
+      &quot;source_id&quot;,&#xd;
+      &quot;case_start_date&quot;,&#xd;
+      &quot;request_received_at&quot;,&#xd;
+      &quot;communications_cases&quot;,&#xd;
+      &quot;communications_communication_cases&quot;&#xd;
+    ]&#xd;
+  },&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;service_id&quot;: ${Name__WelcomeCall_serviceID},&#xd;
+    &quot;record_status&quot;: &quot;ACTIVE&quot;,&#xd;
+    &quot;show_mi_popup&quot;: false,&#xd;
+    &quot;case_status_id&quot;: ${Name__WelcomeCall_variables.case_status_id},&#xd;
+    &quot;sub_service_id&quot;: ${Name__WelcomeCall_sub_service_id},&#xd;
+    &quot;success_popup_text&quot;: &quot;This case is ready for Welcome Call (WC)&quot;,&#xd;
+    &quot;success_popup_button_text&quot;: &quot;Proceed to Welcome Call Case Manager&quot;,&#xd;
+    &quot;users&quot;: {&#xd;
+      &quot;id&quot;: 1387&#xd;
+    },&#xd;
+    &quot;programs&quot;: {&#xd;
+      &quot;id&quot;: ${Program}&#xd;
+    },&#xd;
+    &quot;products&quot;: {&#xd;
+      &quot;id&quot;:  ${serviceIdProdcutName}&#xd;
+    },&#xd;
+    &quot;c_provider&quot;: {&#xd;
+      &quot;id&quot;:  ${ProviderRecordID}&#xd;
+    },&#xd;
+    &quot;requestor&quot;: {&#xd;
+      &quot;id&quot;:  ${ProviderRequesterID}&#xd;
+    },&#xd;
+    &quot;case_summary&quot;: {&#xd;
+      &quot;record_status&quot;: &quot;ACTIVE&quot;&#xd;
+    },&#xd;
+    &quot;intake_channel_id&quot;: 419,&#xd;
+    &quot;source_id&quot;: &quot;${InteractionCommunicaitionID}&quot;,&#xd;
+    &quot;case_start_date&quot;: &quot;2025-09-02T10:04:00.000Z&quot;,&#xd;
+    &quot;request_received_at&quot;: &quot;2025-09-02T10:03:41.345Z&quot;,&#xd;
+    &quot;communications_cases&quot;: [&#xd;
+      {&#xd;
+        &quot;id&quot;: &quot;${InteractionID}&quot;,&#xd;
+        &quot;_state&quot;: &quot;ADDED&quot;&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;communications_communication_cases&quot;: [&#xd;
+      {&#xd;
+        &quot;id&quot;: &quot;${InteractionID}&quot;,&#xd;
+        &quot;_state&quot;: &quot;ADDED&quot;&#xd;
+      }&#xd;
+    ]&#xd;
+  }&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="extractCase_ID">
+              <stringProp name="JSONPostProcessor.referenceNames">CaseID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.workflow_instance.case_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="extractTask_ID">
+              <stringProp name="JSONPostProcessor.referenceNames">WorkFlowTaskIDA</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.workflow_instance.tasks[0].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate Response Code 200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">1</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate Response" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="397693000">${serviceIdWelcome Call}</stringProp>
+                <stringProp name="-1303866479">WC Case Manager</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="New_Case Status id">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/case/${CaseID}?embedded=case_status_id,case_key&amp;entityId=32</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="case_status_id">
+              <stringProp name="JSONPostProcessor.referenceNames">case_status_id18</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.case_status_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate Response Code 200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">1</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="New_case_ID">
+            <stringProp name="TestPlan.comments">To fetch newly created case details</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/case_statuses/${case_status_id18}?embedded=name&amp;entityId=3</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate Response Code 200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">1</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SAVE_WelcomeCall_Case">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/case/${CaseID}?entityId=32&amp;layoutId=84</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;meta_data&quot;: {&#xd;
+    &quot;entity_id&quot;: 32,&#xd;
+    &quot;layout_id&quot;: 84&#xd;
+  },&#xd;
+  &quot;data&quot;: {&#xd;
+    &quot;products&quot;: {&#xd;
+      &quot;id&quot;: ${serviceIdProdcutName}&#xd;
+    },&#xd;
+    &quot;services&quot;: {&#xd;
+      &quot;id&quot;: ${serviceIdWelcome Call}&#xd;
+    },&#xd;
+    &quot;intake_channel&quot;: {&#xd;
+      &quot;id&quot;: 419&#xd;
+    },&#xd;
+    &quot;c_sub_services&quot;: {&#xd;
+      &quot;id&quot;: ${Name__WelcomeCall_sub_service_id}&#xd;
+    },&#xd;
+    &quot;users&quot;: {&#xd;
+      &quot;id&quot;: 1387&#xd;
+    },&#xd;
+    &quot;requestor&quot;: {&#xd;
+      &quot;id&quot;: 1021000565&#xd;
+    },&#xd;
+    &quot;patient&quot;: {&#xd;
+      &quot;id&quot;: 999&#xd;
+    },&#xd;
+    &quot;c_provider&quot;: {&#xd;
+      &quot;id&quot;:${ProviderRecordID}&#xd;
+    },&#xd;
+    &quot;c_facilities&quot;: {&#xd;
+      &quot;id&quot;: 381&#xd;
+    },&#xd;
+    &quot;c_providers&quot;: {&#xd;
+      &quot;id&quot;: 111&#xd;
+    },&#xd;
+    &quot;site_of_care&quot;: {&#xd;
+      &quot;id&quot;: 1795&#xd;
+    },&#xd;
+    &quot;record_status&quot;: &quot;ACTIVE&quot;,&#xd;
+    &quot;id&quot;: 33543,&#xd;
+    &quot;c_case_contacts_c_cases&quot;: [&#xd;
+      {&#xd;
+        &quot;name&quot;: &quot;&quot;,&#xd;
+        &quot;contact&quot;: {&#xd;
+          &quot;id&quot;: 1066&#xd;
+        },&#xd;
+        &quot;_state&quot;: &quot;added&quot;&#xd;
+      }&#xd;
+    ]&#xd;
+  }&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="CaseIDAfterSave30310">
+              <stringProp name="JSONPostProcessor.referenceNames">CaseIDAfterSave30310</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate Response Code 200">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">1</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SAVE_WelcomeCall_Completed">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v2/process/task/${WorkFlowTaskIDA}?state=COMPLETED&amp;forced=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="CaseIDAfterSave30310" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">CaseIDAfterSave30310</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Validate Response Code 200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">1</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="layout id and entity id">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/case/${CaseID}?layoutId=84&amp;entityId=32</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Instance api after saving data">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v1/process/case/${CaseID}/instance</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="WorkFlowTaskID2Capture Claim Data_ID">
+              <stringProp name="JSONPostProcessor.referenceNames">WorkFlowTaskID2Capture Claim Data_ID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.workflow_instance.tasks[0].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task-2_  Send_Welcome_Letter_Open">
+            <stringProp name="TestPlan.comments">Open</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v2/process/task/${WorkFlowTaskID2Capture Claim Data_ID}?state=OPEN&amp;forced=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{}&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="WorkFlow_Case_ID2" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">WorkFlow_Case_ID2</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.instance.case_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task Size">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v1/process/get/tasks?size=100</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;search_criteria&quot;:[{&quot;search_key&quot;:&quot;CASE_ID&quot;,&quot;search_value&quot;:[${CaseID}],&quot;operator&quot;:&quot;EQUALS&quot;}]}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Template ID for fax">
+              <stringProp name="JSONPostProcessor.referenceNames">Template ID for fax</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[0].identifier.template_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="CaseID">
+              <stringProp name="JSONPostProcessor.referenceNames">Case_ID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[0].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Case_ID_33918">
+              <stringProp name="JSONPostProcessor.referenceNames">Case_ID_33918</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[0].case_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task-2_  Send_Welcome_Letter__Generate">
+            <stringProp name="TestPlan.comments">Completed</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/template/v1/communications/preview?caseId=${Case_ID_33918}&amp;templateId=1404&amp;editable=true&amp;programId=1</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task-2_  Send_Welcome_Letter__Data">
+            <stringProp name="TestPlan.comments">Completed</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/template/v2/communications/send</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;case_id&quot;:${Case_ID_33918},&quot;template_id&quot;:1404,&quot;service_id&quot;:11,&quot;body&quot;:&quot;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=\&quot;UTF-8\&quot;&gt;&lt;style&gt;&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=\&quot;ck\&quot;&gt;&lt;div class=\&quot;ck-content\&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;&quot;,&quot;editable_fields&quot;:[{&quot;type&quot;:0,&quot;editableValues&quot;:{}}],&quot;view_object&quot;:[{&quot;name&quot;:[{&quot;key&quot;:&quot;case.patient.first_name&quot;,&quot;value&quot;:&quot;TEST_USER1&quot;}],&quot;entity&quot;:&quot;patient&quot;,&quot;type&quot;:&quot;to&quot;,&quot;entity_id&quot;:18,&quot;entity_name&quot;:&quot;patients&quot;,&quot;record_ids&quot;:[999]}],&quot;recipient_to&quot;:[&quot;TEST_USER1&quot;],&quot;recipient_cc&quot;:[],&quot;recipient_bcc&quot;:[],&quot;correspondence_type&quot;:&quot;LETTER&quot;,&quot;attachment&quot;:[{&quot;id&quot;:2850,&quot;attachment_name&quot;:&quot;Simlandi Shared Solutions Welcome Letter FINAL NEW.pdf&quot;,&quot;attachment_document_type&quot;:&quot;DYNAMIC_DOCUMENT&quot;,&quot;attachment_type&quot;:&quot;CUSTOM&quot;,&quot;attachment_document_id&quot;:1131,&quot;include_editable_text&quot;:false,&quot;contains_docusign&quot;:false}]}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Task_2_Resource_Id">
+              <stringProp name="JSONPostProcessor.referenceNames">Task_2_Resource_Id</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task-2_  Send_Welcome_Letter__Patch">
+            <stringProp name="TestPlan.comments">Completed</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v1/tasks/${WorkFlowTaskID2Capture Claim Data_ID}</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;resource_id&quot;:&quot;${Task_2_Resource_Id}&quot;,&quot;identifier&quot;:{&quot;eval_keys&quot;:[&quot;entity_id&quot;,&quot;template_id&quot;,&quot;service_id&quot;],&quot;service_id&quot;:&quot;11&quot;,&quot;template_id&quot;:1404,&quot;ui_identifier&quot;:&quot;SEND_COMMUNICATION_FAX&quot;,&quot;action_buttons&quot;:{&quot;edit&quot;:false,&quot;save&quot;:false,&quot;send&quot;:true,&quot;cancel&quot;:false,&quot;resend&quot;:false,&quot;preview&quot;:false,&quot;download&quot;:false,&quot;save_draft&quot;:false},&quot;template&quot;:{&quot;id&quot;:1404}}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Instance api">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v1/process/case/${CaseID}/instance</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task-2_  Send_Welcome_Letter_Complete">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v2/process/task/${WorkFlowTaskID2Capture Claim Data_ID}?state=COMPLETED&amp;forced=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Instance api after saving data">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v1/process/case/${CaseID}/instance</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="WorkFlowTaskID3_Welcome_Call_attempt">
+              <stringProp name="JSONPostProcessor.referenceNames">WorkFlowTaskID3</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.workflow_instance.tasks[0].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task-3_Conduct_Welcome_Call_Attempt_1__Open">
+            <stringProp name="TestPlan.comments">Open</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v2/process/task/${WorkFlowTaskID3}?state=OPEN&amp;forced=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="WorkFlow_Case_ID3">
+              <stringProp name="JSONPostProcessor.referenceNames">WorkFlow_Case_ID3</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.instance.case_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task Size">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v1/process/get/tasks?size=100</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;search_criteria&quot;:[{&quot;search_key&quot;:&quot;CASE_ID&quot;,&quot;search_value&quot;:[${CaseID}],&quot;operator&quot;:&quot;EQUALS&quot;}]}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="task-3-conduct_welcome _call_Resource_Id">
+              <stringProp name="JSONPostProcessor.referenceNames">task-3-conduct_welcome _call_Resource_Id</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..[?(@.name==&quot;Conduct Welcome Call Attempt 1&quot;)].resource_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Task_3_Welcome_call_task_Id">
+              <stringProp name="JSONPostProcessor.referenceNames">Task_3_Welcome_call_task_Id</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..[?(@.name==&quot;Conduct Welcome Call Attempt 1&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="CaseID">
+              <stringProp name="JSONPostProcessor.referenceNames">Case_ID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[0].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Case_ID_33918">
+              <stringProp name="JSONPostProcessor.referenceNames">Case_ID_33918</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[0].case_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task-3_Conduct_Welcome_Call_Attempt_1">
+            <stringProp name="TestPlan.comments">Post </stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/entity2child/${Task_3_Welcome_call_task_Id}</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;entity_name&quot;:&quot;task&quot;,&quot;select&quot;:[&quot;c_case_notes_task&quot;,&quot;name&quot;],&quot;filters&quot;:[{&quot;criteria&quot;:[]}],&quot;related_entities&quot;:{&quot;c_case_notes_task&quot;:{&quot;select&quot;:[&quot;name&quot;],&quot;criteria&quot;:[{&quot;criteria&quot;:[]}]}}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task-3_Conduct_Welcome_Call_Attempt_1__update">
+            <stringProp name="TestPlan.comments">GET Call</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/followup_nursing/${task-3-conduct_welcome _call_Resource_Id}?entityId=1941&amp;layoutId=7049</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;meta_data&quot;:{&quot;entity_id&quot;:1941,&quot;layout_id&quot;:7049},&quot;data&quot;:{&quot;followup_required&quot;:{&quot;id&quot;:118},&quot;id&quot;:${task-3-conduct_welcome _call_Resource_Id},&quot;record_status&quot;:&quot;ACTIVE&quot;}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task-3_Conduct_Welcome_Call_Attempt_1__Patch">
+            <stringProp name="TestPlan.comments">GET Call</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v1/tasks/${Task_3_Welcome_call_task_Id}</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;resource_id&quot;:${task-3-conduct_welcome _call_Resource_Id}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task-3_Conduct_Welcome_Call_Attempt_1__completed">
+            <stringProp name="TestPlan.comments">Completed</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v2/process/task/${WorkFlowTaskID3}?state=COMPLETED&amp;forced=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Instance api after saving data">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v1/process/case/${CaseID}/instance</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="WorkFlowTaskID2Capture Claim Data_ID">
+              <stringProp name="JSONPostProcessor.referenceNames">WorkFlowTaskID4</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.workflow_instance.tasks[0].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="WorkFlowTaskID2Capture__Data_CaeID">
+              <stringProp name="JSONPostProcessor.referenceNames">WorkFlowTaskID4Capture__Data_CaeID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..[?(@.name==&apos;Capture Data&apos;)].case_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="WorkFlowTaskID3Resource_ID">
+              <stringProp name="JSONPostProcessor.referenceNames">WorkFlowTaskID3Resource_ID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.tasks[?(@.name == &apos;Capture Data&apos;)].resource_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task-4_ Capture_Data_Open">
+            <stringProp name="TestPlan.comments">Open</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v2/process/task/${WorkFlowTaskID4}?state=OPEN&amp;forced=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task Size">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v1/process/get/tasks?size=100</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;search_criteria&quot;:[{&quot;search_key&quot;:&quot;CASE_ID&quot;,&quot;search_value&quot;:[${CaseID}],&quot;operator&quot;:&quot;EQUALS&quot;}]}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Task_4_Capture Data_task_Id_Resource_Id">
+              <stringProp name="JSONPostProcessor.referenceNames">Task_4_Capture Data_task_Id_Resource_Id</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..[?(@.name==&quot;Conduct Welcome Call Attempt 1&quot;)].resource_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Task_4_Capture Data_task_Id">
+              <stringProp name="JSONPostProcessor.referenceNames">Task_4_Capture Data_task_Id</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..[?(@.name==&quot;Capture Data&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="CaseID">
+              <stringProp name="JSONPostProcessor.referenceNames">Case_ID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[0].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Case_ID_33918">
+              <stringProp name="JSONPostProcessor.referenceNames">Case_ID_33918</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[0].case_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task-4_ Capture_Data___Update">
+            <stringProp name="TestPlan.comments">GET Call</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/entities/${WorkFlowTaskID4Capture__Data_CaeID}/c_case_inquiries_and_topics</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;meta_data&quot;:{&quot;entity_id&quot;:&quot;1331&quot;,&quot;layout_id&quot;:2334,&quot;relation_identifier&quot;:&quot;37aa9b1a-52ab-4335-8c95-9b939911a815&quot;},&quot;data&quot;:{&quot;nature_of_enquiry&quot;:{&quot;id&quot;:118},&quot;discussion_topic&quot;:{&quot;id&quot;:469}}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task-4_ Capture_Data___POST">
+            <stringProp name="TestPlan.comments">GET Call</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_case_inquiries_and_topics/${Case_ID}/entities?unassigned=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;1331&quot;,&quot;layout_id&quot;:2368,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;37aa9b1a-52ab-4335-8c95-9b939911a815&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;nature_of_enquiry&quot;,&quot;discussion_topic&quot;],&quot;related_entities&quot;:{&quot;nature_of_enquiry&quot;:{&quot;select&quot;:[]},&quot;discussion_topic&quot;:{&quot;select&quot;:[]}}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task-4_ Capture_Data__Completed">
+            <stringProp name="TestPlan.comments">Completed</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v2/process/task/${WorkFlowTaskID4}?state=COMPLETED&amp;forced=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Instance api after saving data">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v1/process/case/${CaseID}/instance</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="WorkFlowTaskID2Capture Claim Data_ID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">WorkFlowTaskID5</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.workflow_instance.tasks[0].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="WorkFlowTaskID2Capture_Claim_Data_CaeID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">WorkFlowTaskID5_CaeID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.workflow_instance.tasks[0].case_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="WorkFlowTaskID3Resource_ID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">WorkFlowTaskID3Resource_ID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.workflow_instance.tasks[0].resource_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task-5_Determine_Next_Steps_Open">
+            <stringProp name="TestPlan.comments">Open</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v2/process/task/${WorkFlowTaskID5}?state=OPEN&amp;forced=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task-5_Determine_Next_Steps__Update" enabled="true">
+            <stringProp name="TestPlan.comments">GET Call</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/case/${WorkFlowTaskID5_CaeID}?entityId=32&amp;layoutId=6740</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;meta_data&quot;:{&quot;entity_id&quot;:32,&quot;layout_id&quot;:6740},&quot;data&quot;:{&quot;create_welcome_call_nursing&quot;:true,&quot;create_ci_case&quot;:true,&quot;create_ri_case&quot;:true,&quot;create_copay&quot;:true,&quot;create_ar_case&quot;:true,&quot;record_status&quot;:&quot;ACTIVE&quot;,&quot;id&quot;:${WorkFlowTaskID5_CaeID}}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Instance api after saving data">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v1/process/case/${CaseID}/instance</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="WorkFlowTaskID2Capture Claim Data_ID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">WorkFlowTaskID5Comp</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.workflow_instance.tasks[0].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="WorkFlowTaskID2Capture_Claim_Data_CaeID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">WorkFlowTaskID5_CaeID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.workflow_instance.tasks[0].case_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="WorkFlowTaskID3Resource_ID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">WorkFlowTaskID3Resource_ID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.workflow_instance.tasks[0].resource_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task-5_Determine_Next_Steps__Completed">
+            <stringProp name="TestPlan.comments">Completed</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v2/process/task/${WorkFlowTaskID5Comp}?state=COMPLETED&amp;forced=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task api after saving data">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v1/process/get/tasks?size=100</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;search_criteria&quot;:[{&quot;search_key&quot;:&quot;CASE_ID&quot;,&quot;search_value&quot;:[&quot;${CaseID}&quot;],&quot;operator&quot;:&quot;EQUALS&quot;}]}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="WorkFlow_TaskID_11" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">WorkFlow_TaskID_11</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;Determine Next Steps&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="WorkFlow_Resource_ID11" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">WorkFlow_Resource_ID11</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;Determine Next Steps&quot;)].resource_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="WorkFlow_Case_ID11" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">WorkFlow_Case_ID11</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[?(@.name==&quot;Determine Next Steps&quot;)].case_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_Found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Refresh_Instance_API">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v1/process/case/${CaseID}/instance</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="TaskID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">Task4InstanceOpen</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.workflow_instance.tasks[0].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NOTFound</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="CaseId" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">CaseId</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.workflow_instance.tasks[0].case_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NOTFound</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Case summary Id">
+            <stringProp name="TestPlan.comments">to fetch case summary id update</stringProp>
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/case/${CaseId}?embedded=case_summary&amp;entityId=32</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Case summary Id" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">CaseSummaryId</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.case_summary.id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NOTFound</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Update Case Summary">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/case_summary/${CaseSummaryId}?entityId=1311&amp;layoutId=7189</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;meta_data&quot;:{&quot;entity_id&quot;:1311,&quot;layout_id&quot;:7189},&quot;data&quot;:{&quot;outcome&quot;:{&quot;id&quot;:36},&quot;outcome_reason&quot;:{&quot;id&quot;:259},&quot;id&quot;:${CaseSummaryId},&quot;record_status&quot;:&quot;ACTIVE&quot;,&quot;cases&quot;:{&quot;record_status&quot;:&quot;ACTIVE&quot;,&quot;id&quot;:${CaseId},&quot;patient&quot;:{&quot;record_status&quot;:&quot;ACTIVE&quot;,&quot;id&quot;:999,&quot;patient_journey_status_reason&quot;:{&quot;id&quot;:16,&quot;_state&quot;:&quot;REMOVED&quot;},&quot;patient_journey_status&quot;:{&quot;id&quot;:5}}}}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task Size">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v1/process/get/tasks?size=100</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;search_criteria&quot;:[{&quot;search_key&quot;:&quot;CASE_ID&quot;,&quot;search_value&quot;:[${CaseID}],&quot;operator&quot;:&quot;EQUALS&quot;}]}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Task_6_Complete_case">
+              <stringProp name="JSONPostProcessor.referenceNames">Task_6_Complete_case</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..[?(@.name==&quot;Complete Case&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Complete Task Open">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v2/process/task/${Task_6_Complete_case}?state=OPEN&amp;forced=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task Size">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v1/process/get/tasks?size=100</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;search_criteria&quot;:[{&quot;search_key&quot;:&quot;CASE_ID&quot;,&quot;search_value&quot;:[${CaseID}],&quot;operator&quot;:&quot;EQUALS&quot;}]}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Task_6_Complete_case">
+              <stringProp name="JSONPostProcessor.referenceNames">Task_6_Complete_case</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..[?(@.name==&quot;Complete Case&quot;)].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">Not_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task Complete Close">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/workflow/v2/process/task/${Task_6_Complete_case}?state=COMPLETED&amp;forced=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">PATCH</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

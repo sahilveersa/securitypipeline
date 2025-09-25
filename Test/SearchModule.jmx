@@ -1,0 +1,2108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Search module">
+      <stringProp name="TestPlan.comments">This test plan was created by the BlazeMeter converter v.${project.version}. Please contact support@blazemeter.com for further support.</stringProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Search module">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">x-tenantid</stringProp>
+            <stringProp name="Header.value">3607</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">content-type</stringProp>
+            <stringProp name="Header.value">application/json</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Authorization</stringProp>
+            <stringProp name="Header.value">Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkpZaEFjVFBNWl9MWDZEQmxPV1E3SG4wTmVYRSIsImtpZCI6IkpZaEFjVFBNWl9MWDZEQmxPV1E3SG4wTmVYRSJ9.eyJhdWQiOiJhcGk6Ly9jOGMwZWIyOS1kN2M0LTRmZTgtODZmOC1kMzE5M2ZlY2VkMjAiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8yMTNjZTJkZC0zNzlkLTQ1NjUtYWRiNy04MjhiNWQ5NmUwMzEvIiwiaWF0IjoxNzU1MDA0ODIwLCJuYmYiOjE3NTUwMDQ4MjAsImV4cCI6MTc1NTAwODg2NCwiYWNyIjoiMSIsImFpbyI6IkFaUUFhLzhaQUFBQW53WHluYWNtczVnbkNmdW0wKyt1V1hBZ3lwckxOOTNvRm1ERURkWlh2UCswWTNYOFVvWWVHSnNCUXpJOEhESFBCOWpwVkJTdmlwcExLbDJ4L1U2bFJzbkRlTXZVa2tEWHZJait4aFNqdmRzcHN0Q2ZkNTVaMm1XbThJYzRFalE3clgxTDdOMXJPNzBtSmtBR1NXSmU5ck5pbEpRLzlQSzJmTWZBYWNrOHN1elVRM2VSeEs3bkdsVlo0VyszV2FTVCIsImFtciI6WyJwd2QiLCJtZmEiXSwiYXBwaWQiOiJjOGMwZWIyOS1kN2M0LTRmZTgtODZmOC1kMzE5M2ZlY2VkMjAiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlRoYXJlamEiLCJnaXZlbl9uYW1lIjoiQWJoaW5hdiIsImlwYWRkciI6IjEyMi4xNjIuMTUxLjc3IiwibmFtZSI6IkFiaGluYXYgVGhhcmVqYShWZWVyc2EpIiwib2lkIjoiMGIzZDhhOGEtZDdiNi00M2ExLThiOGQtZTg2Yzk1ZTg5M2JkIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTQxMzY2NTQ3MzQtMjE5MjgyMzk4MC0xNjY1ODYxODgwLTU2NzEiLCJyaCI6IjEuQVhFQjNlSThJWjAzWlVXdHQ0S0xYWmJnTVNucndNakUxLWhQaHZqVEdUX3M3U0J4QVdKeEFRLiIsInNjcCI6ImFwaV9hY2Nlc3MiLCJzaWQiOiIwMDdiMmI1OS1mMTBkLWYwMmUtM2QzZS0zYTk4ZjVjYjEwYTYiLCJzdWIiOiJnQkRONHFEbE5OU1B5YnRyUW50TG1UZ2NBYV92TURCNllib2RtN1U5RGZzIiwidGlkIjoiMjEzY2UyZGQtMzc5ZC00NTY1LWFkYjctODI4YjVkOTZlMDMxIiwidW5pcXVlX25hbWUiOiJhYmhpbmF2LnRoYXJlamFAbmVvdmFuY2UuY29tIiwidXBuIjoiYWJoaW5hdi50aGFyZWphQG5lb3ZhbmNlLmNvbSIsInV0aSI6ImJDZWJaN3A2VlVPT01EVTZhXzQwQUEiLCJ2ZXIiOiIxLjAiLCJ4bXNfZnRkIjoiU0FCb0JMcVBrVkl5TDBzMG12UTFyZnhwNklwT19uU3g0cDV1NmFYN2FuQUJkWE4zWlhOME15MWtjMjF6In0.H--OlykkalJ9QYwwo6Q08XPmvgmttEZJDIsZZbdecFQ_jsQ-2bIWeqm7S7nNX4-yjgE-QjPlvcHSk6ka7wP5NT9w5RfWuXIeznPnD3ZxH6_1kbN7RqgEet1yQxwcTDdqk0HvLe_KKD33Cx0747TFzoELbQgJNa5wyizPEGQ2KIfeRF0T0feQ_uWFuQo5cJ58lKP8z-Ejpw2_zhKHYFVihcrKzgODHxdzpQckBoLujmbJi-vhmjn6KbSlFhpm7lUUecjFTAceDBCmZwn92_G1n3ScXsGyO8WeETB3CkMLlSzE4gJL_0UT3nGZ28RLznvy-BpvpfX-ptdXEHZPd9Lj5Q</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
+        <stringProp name="HTTPSampler.domain">qaapi.app-np.neovance.com</stringProp>
+        <stringProp name="HTTPSampler.protocol">https</stringProp>
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+        <collectionProp name="Arguments.arguments"/>
+      </Arguments>
+      <hashTree/>
+      <DNSCacheManager guiclass="DNSCachePanel" testclass="DNSCacheManager" testname="DNS Cache Manager">
+        <collectionProp name="DNSCacheManager.servers"/>
+        <collectionProp name="DNSCacheManager.hosts"/>
+        <boolProp name="DNSCacheManager.clearEachIteration">true</boolProp>
+        <boolProp name="DNSCacheManager.isCustomResolver">false</boolProp>
+      </DNSCacheManager>
+      <hashTree/>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager">
+        <collectionProp name="CookieManager.cookies"/>
+        <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+      </CookieManager>
+      <hashTree/>
+      <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager">
+        <boolProp name="clearEachIteration">true</boolProp>
+        <boolProp name="useExpires">false</boolProp>
+        <boolProp name="CacheManager.controlledByThread">false</boolProp>
+      </CacheManager>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Search Module">
+        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
+        <longProp name="ThreadGroup.duration">150</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">0</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="LayoutProvider">
+          <stringProp name="HTTPSampler.port">0</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">api/entity-management/v3/layout/paginated?entityId=2143&amp;size=50000&amp;defaultValue=true</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">4226.8</stringProp>
+            <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ProviderEntityID" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">ProviderEntityID</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[0].parent_entity.entity_id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">NOT_found</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ProviderViewLayoutID" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">ProviderLayoutID</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[*].id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">NOT_found</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Provider Loop Controller" enabled="false">
+          <stringProp name="ForeachController.inputVal">ProviderRecodID</stringProp>
+          <stringProp name="ForeachController.returnVal">variable</stringProp>
+          <boolProp name="ForeachController.useSeparator">true</boolProp>
+        </ForeachController>
+        <hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Paginated Call" enabled="false">
+          <stringProp name="HTTPSampler.port">0</stringProp>
+          <stringProp name="HTTPSampler.path">api/entity-management/v3/layout/paginated?entityId=2144&amp;size=50000&amp;defaultValue=true&amp;entityId=2144&amp;size=50000&amp;defaultValue=true</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+            <stringProp name="RandomTimer.range">0.0</stringProp>
+            <stringProp name="ConstantTimer.delay">100</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Patient IDs" enabled="false">
+            <stringProp name="JSONPostProcessor.referenceNames">entity_id</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[2].parent_entity.entity_id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">18</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="List patient Dynamic" enabled="false">
+          <stringProp name="HTTPSampler.port">0</stringProp>
+          <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/patients_view</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;2144&quot;,&quot;select&quot;:[&quot;Patient ID&quot;,&quot;First Name&quot;,&quot;Last Name&quot;,&quot;Preferred Name&quot;,&quot;Patient Journey Status&quot;,&quot;Patient Journey Status Reason&quot;,&quot;Date of Birth&quot;,&quot;SSN&quot;,&quot;Phone Number&quot;,&quot;Email Address&quot;,&quot;Address Line 1&quot;,&quot;Zip Code&quot;,&quot;City&quot;,&quot;State&quot;,&quot;external_id&quot;,&quot;Legacy ID&quot;,&quot;created_at&quot;,&quot;created_by&quot;,&quot;modified_at&quot;,&quot;modified_by&quot;],&quot;page&quot;:0,&quot;size&quot;:25,&quot;related_entities&quot;:{},&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;layout_id&quot;:7479}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">0.0</stringProp>
+            <stringProp name="ConstantTimer.delay">100</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Patient IDs" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">patient_id</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[*].id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">20</stringProp>
+            <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Patient Loop Controller" enabled="false">
+          <stringProp name="ForeachController.inputVal">patient_id</stringProp>
+          <stringProp name="ForeachController.returnVal">patient_id</stringProp>
+          <boolProp name="ForeachController.useSeparator">true</boolProp>
+        </ForeachController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="View patient Dynamic" enabled="false">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/patients/${patient_id}?layoutId=5809&amp;entityId=18</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">0.0</stringProp>
+              <stringProp name="ConstantTimer.delay">0.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ICD 10 Accordian" enabled="false">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_patient_diagnosis_codes/${patient_id}/entities?unassigned=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;1805&quot;,&quot;layout_id&quot;:6497,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;b236b078-ee36-4dd5-85a3-5a1df42353b4&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;product&quot;,&quot;diagnosis_rank&quot;,&quot;diagnosis_code&quot;,&quot;other_diagnosis_code&quot;,&quot;diagnosis_code.icd_code_description&quot;,&quot;created_by&quot;,&quot;created_at&quot;,&quot;modified_by&quot;,&quot;modified_at&quot;],&quot;related_entities&quot;:{&quot;diagnosis_code&quot;:{&quot;select&quot;:[&quot;icd_code_description&quot;]},&quot;product&quot;:{&quot;select&quot;:[]}}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+              <stringProp name="RandomTimer.range">0.0</stringProp>
+              <stringProp name="ConstantTimer.delay">0.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Patient Therapies Accordian" enabled="false">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_patient_therapy_details/${patient_id}/entities?unassigned=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;1327&quot;,&quot;layout_id&quot;:6471,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;e01a941c-df6f-4f69-9208-487cfd450fbe&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;product&quot;,&quot;dosage&quot;,&quot;units&quot;,&quot;therapy_units_of_measurement&quot;,&quot;therapy_frequency&quot;,&quot;therapy_status&quot;,&quot;therapy_status_reason&quot;,&quot;anticipated_start_date&quot;,&quot;therapy_anticipated_duration&quot;,&quot;actual_start_date&quot;,&quot;therapy_discontinuation_date&quot;,&quot;patient_goal&quot;,&quot;other_products&quot;,&quot;created_by&quot;,&quot;created_at&quot;,&quot;modified_by&quot;,&quot;modified_at&quot;],&quot;related_entities&quot;:{&quot;therapy_status&quot;:{&quot;select&quot;:[]},&quot;product&quot;:{&quot;select&quot;:[]},&quot;therapy_status_reason&quot;:{&quot;select&quot;:[]}}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+              <stringProp name="RandomTimer.range">0.0</stringProp>
+              <stringProp name="ConstantTimer.delay">0.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="patient cases Accordian" enabled="false">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/patient_cases_view/${patient_id}/entities?unassigned=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;1810&quot;,&quot;layout_id&quot;:6470,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;398e0609-457f-4916-a81b-d93cfd4b3a2a&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;case_id&quot;,&quot;product_name&quot;,&quot;overall_status&quot;,&quot;case_status&quot;,&quot;service_type&quot;,&quot;sub_service_type&quot;,&quot;outcome&quot;,&quot;outcome_reason&quot;,&quot;case_completion_date&quot;,&quot;user_name&quot;,&quot;provider_name&quot;,&quot;channel&quot;,&quot;parent_case_id&quot;,&quot;case_document_count&quot;,&quot;created_at&quot;,&quot;created_by&quot;,&quot;modified_at&quot;,&quot;modified_by&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+              <stringProp name="RandomTimer.range">0.0</stringProp>
+              <stringProp name="ConstantTimer.delay">0.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Patient Address Accordian" enabled="false">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_patient_addresses/${patient_id}/entities?unassigned=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;19&quot;,&quot;layout_id&quot;:6460,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;e7e4ba3b-56e7-458b-9fdd-61c0cbc99b9c&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;record_status&quot;,&quot;is_preferred&quot;,&quot;patient_address_type&quot;,&quot;address_line_1&quot;,&quot;address_line_2&quot;,&quot;city&quot;,&quot;state&quot;,&quot;zip_code&quot;,&quot;country&quot;,&quot;po_box&quot;,&quot;created_by&quot;,&quot;created_at&quot;,&quot;modified_by&quot;,&quot;modified_at&quot;],&quot;related_entities&quot;:{&quot;country&quot;:{&quot;select&quot;:[]},&quot;state&quot;:{&quot;select&quot;:[]}}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+              <stringProp name="RandomTimer.range">0.0</stringProp>
+              <stringProp name="ConstantTimer.delay">0.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Patient Contact Accordian" enabled="false">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_patient_phones/${patient_id}/entities?unassigned=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;23&quot;,&quot;layout_id&quot;:6461,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;b8fe2e1f-0334-4ed1-898b-9f04a3db3584&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;record_status&quot;,&quot;is_preferred&quot;,&quot;phone_type&quot;,&quot;phone_priority&quot;,&quot;phone_number&quot;,&quot;voicemail_allowed&quot;,&quot;texting_allowed&quot;,&quot;mobile_device&quot;,&quot;created_by&quot;,&quot;created_at&quot;,&quot;modified_by&quot;,&quot;modified_at&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+              <stringProp name="RandomTimer.range">0.0</stringProp>
+              <stringProp name="ConstantTimer.delay">0.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Patient Consent Accordian" enabled="false">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_patient_consents/${patient_id}/entities?unassigned=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;1807&quot;,&quot;layout_id&quot;:6463,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;4cd0aa1a-8393-4af1-8b67-f9b8d5f587a4&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;consent_type&quot;,&quot;consent_attestation_method&quot;,&quot;start_date&quot;,&quot;expiration_date&quot;,&quot;revoked&quot;,&quot;consenter_type&quot;,&quot;relationship_to_patient&quot;,&quot;consenter_first_name&quot;,&quot;consenter_last_name&quot;,&quot;consenter_phone&quot;,&quot;created_at&quot;,&quot;created_by&quot;,&quot;modified_at&quot;,&quot;modified_by&quot;],&quot;related_entities&quot;:{&quot;consent_type&quot;:{&quot;select&quot;:[]}}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+              <stringProp name="RandomTimer.range">0.0</stringProp>
+              <stringProp name="ConstantTimer.delay">0.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Associated Contacts Accordian" enabled="false">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_patient_relationship/${patient_id}/entities?unassigned=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;1833&quot;,&quot;layout_id&quot;:6668,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;1316ecbb-98ff-4d83-989d-b6bc6094e2fa&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;record_status&quot;,&quot;contact&quot;,&quot;contact.contact_type&quot;,&quot;relationship_to_patient&quot;,&quot;created_at&quot;,&quot;created_by&quot;,&quot;modified_at&quot;,&quot;modified_by&quot;],&quot;related_entities&quot;:{&quot;contact&quot;:{&quot;select&quot;:[&quot;contact_type&quot;]}}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+              <stringProp name="RandomTimer.range">0.0</stringProp>
+              <stringProp name="ConstantTimer.delay">0.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Insurance Policy Accordian" enabled="false">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_patient_insurances/${patient_id}/entities?unassigned=false</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;1806&quot;,&quot;layout_id&quot;:6487,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;6e72ec5c-5a12-4025-8f59-cc1f8f11cebc&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;policy_status&quot;,&quot;policy_rank&quot;,&quot;policy_source&quot;,&quot;payer&quot;,&quot;payer.payer_type&quot;,&quot;plan_phone&quot;,&quot;plan&quot;,&quot;policy_id&quot;,&quot;group_id&quot;,&quot;effective_date&quot;,&quot;expiration_date&quot;,&quot;pbm_name&quot;,&quot;phone_pbm&quot;,&quot;rx_bin&quot;,&quot;rx_pcn&quot;,&quot;rx_group&quot;,&quot;created_by&quot;,&quot;created_at&quot;,&quot;modified_by&quot;,&quot;modified_at&quot;],&quot;related_entities&quot;:{&quot;plan&quot;:{&quot;select&quot;:[]},&quot;payer&quot;:{&quot;select&quot;:[&quot;payer_type&quot;]}}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+              <stringProp name="RandomTimer.range">0.0</stringProp>
+              <stringProp name="ConstantTimer.delay">0.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="false">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Payer" enabled="false"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Payer List" enabled="false">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/payers</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;17&quot;,&quot;select&quot;:[&quot;payer_key&quot;,&quot;legacy_id&quot;,&quot;payer_type&quot;,&quot;name&quot;,&quot;email&quot;,&quot;payer_status&quot;],&quot;page&quot;:0,&quot;size&quot;:25,&quot;related_entities&quot;:{},&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;layout_id&quot;:4842}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+              <stringProp name="RandomTimer.range">0.0</stringProp>
+              <stringProp name="ConstantTimer.delay">100</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Payer IDs" enabled="false">
+              <stringProp name="JSONPostProcessor.referenceNames">payer_id</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[*].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">20</stringProp>
+              <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Payer Loop Controller" enabled="false">
+            <stringProp name="ForeachController.inputVal">payer_id</stringProp>
+            <stringProp name="ForeachController.returnVal">dynamicPayerId</stringProp>
+            <boolProp name="ForeachController.useSeparator">true</boolProp>
+          </ForeachController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="View Payer" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/payers/${dynamicPayerId}?layoutId=6536&amp;entityId=17</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Payer Phone and Fax Accordian" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_payer_phones/${dynamicPayerId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;24&quot;,&quot;layout_id&quot;:6540,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;c4423c85-7d70-4488-83a5-7f64646a663c&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;record_status&quot;,&quot;is_preferred&quot;,&quot;phone_type&quot;,&quot;phone_priority&quot;,&quot;phone_number&quot;,&quot;created_by&quot;,&quot;created_at&quot;,&quot;modified_by&quot;,&quot;modified_at&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Associated Plans Accordian" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_plans/${dynamicPayerId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;26&quot;,&quot;layout_id&quot;:6544,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;f425b9ea-ed43-482d-bb72-36f175f29b23&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;record_status&quot;,&quot;plan_key&quot;,&quot;name&quot;,&quot;plan_type&quot;,&quot;c_payers&quot;,&quot;c_payers.payer_type&quot;,&quot;c_payers.record_status&quot;,&quot;c_payers.created_by&quot;,&quot;c_payers.created_at&quot;,&quot;c_payers.modified_by&quot;,&quot;c_payers.modified_at&quot;],&quot;related_entities&quot;:{&quot;c_payers&quot;:{&quot;select&quot;:[&quot;record_status&quot;,&quot;payer_type&quot;,&quot;modified_by&quot;,&quot;created_at&quot;,&quot;modified_at&quot;,&quot;created_by&quot;]}}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Plan Phone and Fax Accordian" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_plan_phones/${dynamicPayerId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;1810&quot;,&quot;layout_id&quot;:6470,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;398e0609-457f-4916-a81b-d93cfd4b3a2a&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;case_id&quot;,&quot;product_name&quot;,&quot;overall_status&quot;,&quot;case_status&quot;,&quot;service_type&quot;,&quot;sub_service_type&quot;,&quot;outcome&quot;,&quot;outcome_reason&quot;,&quot;case_completion_date&quot;,&quot;user_name&quot;,&quot;provider_name&quot;,&quot;channel&quot;,&quot;parent_case_id&quot;,&quot;case_document_count&quot;,&quot;created_at&quot;,&quot;created_by&quot;,&quot;modified_at&quot;,&quot;modified_by&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>true</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <sentBytes>true</sentBytes>
+                  <url>true</url>
+                  <threadCounts>true</threadCounts>
+                  <idleTime>true</idleTime>
+                  <connectTime>true</connectTime>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+          </hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="false">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Plan" enabled="false"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Plan List" enabled="false">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/plans</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;26&quot;,&quot;select&quot;:[&quot;plan_key&quot;,&quot;legacy_id&quot;,&quot;name&quot;,&quot;plan_type&quot;,&quot;c_pharmacy_benefit_managers&quot;,&quot;plan_fax&quot;],&quot;page&quot;:0,&quot;size&quot;:25,&quot;related_entities&quot;:{&quot;c_pharmacy_benefit_managers&quot;:{&quot;select&quot;:[]}},&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;layout_id&quot;:4875}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+              <stringProp name="RandomTimer.range">0.0</stringProp>
+              <stringProp name="ConstantTimer.delay">100</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Plan IDs" enabled="false">
+              <stringProp name="JSONPostProcessor.referenceNames">plan_id</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[*].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">20</stringProp>
+              <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Plan Loop Controller" enabled="false">
+            <stringProp name="ForeachController.inputVal">plan_id</stringProp>
+            <stringProp name="ForeachController.returnVal">dynamicPlanId</stringProp>
+            <boolProp name="ForeachController.useSeparator">true</boolProp>
+          </ForeachController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="View Plans" enabled="false">
+              <stringProp name="HTTPSampler.domain">qaapi.app-np.neovance.com</stringProp>
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/plans/${dynamicPlanId}?layoutId=7337&amp;entityId=26</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Phone and Fax Accordian" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_plan_phones/${dynamicPlanId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;1814&quot;,&quot;layout_id&quot;:6551,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;df4f5f1b-4481-400c-8f6c-0fe0aca61bcb&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;record_status&quot;,&quot;is_preferred&quot;,&quot;phone_type&quot;,&quot;phone_priority&quot;,&quot;phone_number&quot;,&quot;created_by&quot;,&quot;created_at&quot;,&quot;modified_by&quot;,&quot;modified_at&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>true</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <sentBytes>true</sentBytes>
+                  <url>true</url>
+                  <threadCounts>true</threadCounts>
+                  <idleTime>true</idleTime>
+                  <connectTime>true</connectTime>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+          </hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="false">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Organizations" enabled="false"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Organizations List" enabled="false">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/organizations</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;997&quot;,&quot;select&quot;:[&quot;organization_key&quot;,&quot;name&quot;,&quot;email&quot;,&quot;organization_fax&quot;,&quot;website&quot;,&quot;npi&quot;,&quot;organization_type&quot;,&quot;tax_id&quot;,&quot;ncpdp&quot;,&quot;external_id&quot;,&quot;legacy_id&quot;],&quot;page&quot;:0,&quot;size&quot;:25,&quot;related_entities&quot;:{&quot;organization_type&quot;:{&quot;select&quot;:[]}},&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;layout_id&quot;:4573}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+              <stringProp name="RandomTimer.range">0.0</stringProp>
+              <stringProp name="ConstantTimer.delay">100</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Organizations IDs" enabled="false">
+              <stringProp name="JSONPostProcessor.referenceNames">org_id</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[*].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">20</stringProp>
+              <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Organizations Loop Controller" enabled="false">
+            <stringProp name="ForeachController.inputVal">org_id</stringProp>
+            <stringProp name="ForeachController.returnVal">dynamicOrgId</stringProp>
+            <boolProp name="ForeachController.useSeparator">true</boolProp>
+          </ForeachController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="View Organizations" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/organizations/${dynamicOrgId}?layoutId=6541&amp;entityId=997</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Phone and Fax Accordian" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_organization_phones/${dynamicOrgId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;1001&quot;,&quot;layout_id&quot;:6542,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;0c03f328-0d45-478d-9efb-abba18b448f0&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;record_status&quot;,&quot;is_preferred&quot;,&quot;phone_type&quot;,&quot;phone_priority&quot;,&quot;phone_number&quot;,&quot;created_by&quot;,&quot;created_at&quot;,&quot;modified_by&quot;,&quot;modified_at&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Organization Addresses Accordian" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_organization_addresses/${dynamicOrgId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;1166&quot;,&quot;layout_id&quot;:6556,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;cb4c6406-f3a9-4505-a764-6a109e4ea885&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;record_status&quot;,&quot;is_preferred&quot;,&quot;address_type&quot;,&quot;address_line_1&quot;,&quot;address_line_2&quot;,&quot;city&quot;,&quot;state&quot;,&quot;zip_code&quot;,&quot;country&quot;,&quot;po_box&quot;,&quot;created_by&quot;,&quot;created_at&quot;,&quot;modified_by&quot;,&quot;modified_at&quot;],&quot;related_entities&quot;:{&quot;state&quot;:{&quot;select&quot;:[]},&quot;country&quot;:{&quot;select&quot;:[]}}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Associated Contacts Accordian" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_contacts/${dynamicOrgId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;998&quot;,&quot;layout_id&quot;:6575,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;497c407e-a711-46cf-aaa4-f1f167bc7a42&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;record_status&quot;,&quot;contact_key&quot;,&quot;first_name&quot;,&quot;last_name&quot;,&quot;contact_type&quot;,&quot;created_by&quot;,&quot;created_at&quot;,&quot;modified_by&quot;,&quot;modified_at&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Associated Cases Accordian" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/organization_cases_view/${dynamicOrgId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;1812&quot;,&quot;layout_id&quot;:6569,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;d0872bf3-4eee-4046-ba02-2a701aa0f6be&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;case_id&quot;,&quot;product_name&quot;,&quot;overall_status&quot;,&quot;case_status&quot;,&quot;service_type&quot;,&quot;sub_service_type&quot;,&quot;outcome&quot;,&quot;outcome_reason&quot;,&quot;case_completion_date&quot;,&quot;user_name&quot;,&quot;patient_name&quot;,&quot;channel&quot;,&quot;parent_case_id&quot;,&quot;created_by&quot;,&quot;created_at&quot;,&quot;modified_by&quot;,&quot;modified_at&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>true</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <sentBytes>true</sentBytes>
+                  <url>true</url>
+                  <threadCounts>true</threadCounts>
+                  <idleTime>true</idleTime>
+                  <connectTime>true</connectTime>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+          </hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="false">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Contacts" enabled="false"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Contacts List" enabled="false">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/contacts</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;998&quot;,&quot;select&quot;:[&quot;contact_key&quot;,&quot;contact_type&quot;,&quot;first_name&quot;,&quot;last_name&quot;,&quot;preferred_name&quot;,&quot;phone_number&quot;,&quot;email&quot;,&quot;legacy_id&quot;,&quot;external_id&quot;,&quot;created_at&quot;,&quot;created_by&quot;,&quot;modified_at&quot;,&quot;modified_by&quot;],&quot;page&quot;:0,&quot;size&quot;:25,&quot;related_entities&quot;:{},&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;layout_id&quot;:4540}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+              <stringProp name="RandomTimer.range">0.0</stringProp>
+              <stringProp name="ConstantTimer.delay">100</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Organizations IDs" enabled="false">
+              <stringProp name="JSONPostProcessor.referenceNames">contact_id</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[*].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">20</stringProp>
+              <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Contacts Loop Controller" enabled="false">
+            <stringProp name="ForeachController.inputVal">contact_id</stringProp>
+            <stringProp name="ForeachController.returnVal">dynamicContactId</stringProp>
+            <boolProp name="ForeachController.useSeparator">true</boolProp>
+          </ForeachController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="View Contacts" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/contacts/${dynamicContactId}?layoutId=6626&amp;entityId=998</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Phone and Fax Accordian" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_contact_phones/${dynamicContactId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;1798&quot;,&quot;layout_id&quot;:6547,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;584c5500-84e4-4524-9fb9-8fc03d54fada&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;record_status&quot;,&quot;is_preferred&quot;,&quot;phone_type&quot;,&quot;phone_priority&quot;,&quot;phone_number&quot;,&quot;mobile_device&quot;,&quot;testing_allowed&quot;,&quot;voicemail_allowed&quot;,&quot;created_by&quot;,&quot;created_at&quot;,&quot;modified_by&quot;,&quot;modified_at&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Contact Addresses Accordian" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_contact_addresses/${dynamicContactId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;1803&quot;,&quot;layout_id&quot;:6561,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;d14b1dec-6fc7-4f07-980d-8f378a7083a0&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;record_status&quot;,&quot;is_preferred&quot;,&quot;address_type&quot;,&quot;address_line_1&quot;,&quot;address_line_2&quot;,&quot;city&quot;,&quot;state&quot;,&quot;zip_code&quot;,&quot;country&quot;,&quot;po_box&quot;,&quot;created_at&quot;,&quot;created_by&quot;,&quot;modified_at&quot;,&quot;modified_by&quot;],&quot;related_entities&quot;:{&quot;country&quot;:{&quot;select&quot;:[]},&quot;state&quot;:{&quot;select&quot;:[]}}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Patient Relationships Accordian" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_patients/${dynamicContactId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;18&quot;,&quot;layout_id&quot;:1965,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;be096888-013d-4ff3-b58f-6f938078a0f3&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;patient_key&quot;,&quot;first_name&quot;,&quot;middle_name&quot;,&quot;last_name&quot;,&quot;gender&quot;,&quot;date_of_birth&quot;,&quot;email&quot;,&quot;ssn&quot;,&quot;preferred_language&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Associated Healthcare Facilities Accordian" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_facilities/${dynamicContactId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;5&quot;,&quot;layout_id&quot;:6611,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;deb70e65-b3b5-48d6-ae13-e0b6d22c8dd2&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;record_status&quot;,&quot;facility_key&quot;,&quot;name&quot;,&quot;facility_type&quot;,&quot;npi&quot;,&quot;tax_id&quot;,&quot;created_by&quot;,&quot;created_at&quot;,&quot;modified_by&quot;,&quot;modified_at&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Associated Organization Accordian" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_organizations/${dynamicContactId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;997&quot;,&quot;layout_id&quot;:6624,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;497c407e-a711-46cf-aaa4-f1f167bc7a42&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;record_status&quot;,&quot;organization_key&quot;,&quot;name&quot;,&quot;organization_type&quot;,&quot;created_at&quot;,&quot;created_by&quot;,&quot;modified_at&quot;,&quot;modified_by&quot;],&quot;related_entities&quot;:{&quot;organization_type&quot;:{&quot;select&quot;:[]}}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Associated Pharmacies Accordian" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_pharmacies/${dynamicContactId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;896&quot;,&quot;layout_id&quot;:6614,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;3abfec7e-20f0-4aff-a66e-9e5075a96522&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;record_status&quot;,&quot;pharmacy_key&quot;,&quot;name&quot;,&quot;pharmacy_type&quot;,&quot;ncpdp&quot;,&quot;npi&quot;,&quot;created_at&quot;,&quot;created_by&quot;,&quot;modified_at&quot;,&quot;modified_by&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Contact Cases Accordian" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/contact_cases_view/${dynamicContactId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;1809&quot;,&quot;layout_id&quot;:6622,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;18d8992d-2142-4149-84af-2dc1bba3ef48&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;case_id&quot;,&quot;product_name&quot;,&quot;patient_name&quot;,&quot;overall_status&quot;,&quot;case_status&quot;,&quot;service_type&quot;,&quot;sub_service_type&quot;,&quot;outcome&quot;,&quot;outcome_reason&quot;,&quot;case_completion_date&quot;,&quot;user_name&quot;,&quot;provider_name&quot;,&quot;channel&quot;,&quot;parent_case_id&quot;,&quot;case_document_count&quot;,&quot;created_at&quot;,&quot;created_by&quot;,&quot;modified_at&quot;,&quot;modified_by&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="false">
+                <stringProp name="RandomTimer.range">0.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="false">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Healthcare Facility" enabled="false"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="LayoutHEalthCareFacility" enabled="false">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/layout/paginated?entityId=2145&amp;size=50000&amp;defaultValue=true&amp;entityId=2145&amp;size=50000&amp;defaultValue=true</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ProviderEntityID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">FacilityEntityID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[0].parent_entity.entity_id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NOT_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="FacilityViewLayoutID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">FacilitylayoutID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[0].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NOT_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ListofFacility" enabled="false">
+            <stringProp name="HTTPSampler.port">0</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/facilities_view</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;2143&quot;,&quot;select&quot;:[&quot;Provider ID&quot;,&quot;First Name&quot;,&quot;Last Name&quot;,&quot;Preferred Name&quot;,&quot;Phone Number&quot;,&quot;Fax Number&quot;,&quot;Email&quot;,&quot;NPI Number&quot;,&quot;Tax ID&quot;,&quot;State License Number&quot;,&quot;PTAN&quot;,&quot;Specialty&quot;,&quot;Exteranl ID&quot;,&quot;Legacy ID&quot;],&quot;page&quot;:0,&quot;size&quot;:100,&quot;related_entities&quot;:{},&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;layout_id&quot;:${FacilitylayoutID}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">4226.8</stringProp>
+              <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="FacilityRecodID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">FacilityRecodID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[*].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NOT_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ViewFacilityID" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">ViewFacilityID</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.content[*].id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NOT_found</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Facilities Loop Controller" enabled="false">
+            <stringProp name="ForeachController.inputVal">FacilityRecodID</stringProp>
+            <stringProp name="ForeachController.returnVal">dynamicFacilityId</stringProp>
+            <boolProp name="ForeachController.useSeparator">true</boolProp>
+          </ForeachController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ViewIndividualFacility" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/facilities/${dynamicFacilityId}?layoutId=6573&amp;entityId=${FacilityEntityID}</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+                <stringProp name="RandomTimer.range">4226.8</stringProp>
+                <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="EntityLayoutFacility" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/layout?type=VIEW_MODE,TABS_OVERVIEW&amp;entityId=${FacilityEntityID}</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+                <stringProp name="RandomTimer.range">4226.8</stringProp>
+                <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ContactlayoutId" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">ContactlayoutId</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$.[:].list_view_layout_id</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">Not Found</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Facility Phone and Fax Information" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_facility_phones/${dynamicFacilityId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;15&quot;,&quot;layout_id&quot;:6596,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;31e91ee3-9d18-48a4-9936-b6434a14bc4e&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;record_status&quot;,&quot;is_preferred&quot;,&quot;phone_type&quot;,&quot;phone_priority&quot;,&quot;phone_number&quot;,&quot;created_by&quot;,&quot;created_at&quot;,&quot;modified_by&quot;,&quot;modified_at&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+                <stringProp name="RandomTimer.range">4226.8</stringProp>
+                <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ContactlayoutId" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">ContactlayoutId</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$.[:].list_view_layout_id</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">Not Found</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="facility_addresses" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_facility_addresses/${dynamicFacilityId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;15&quot;,&quot;layout_id&quot;:6596,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;31e91ee3-9d18-48a4-9936-b6434a14bc4e&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;phone_priority&quot;,&quot;phone_type&quot;,&quot;phone_number&quot;,&quot;phone_number_extension&quot;,&quot;is_preferred&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+                <stringProp name="RandomTimer.range">4226.8</stringProp>
+                <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ContactlayoutId" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">ContactlayoutId</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$.[:].list_view_layout_id</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">Not Found</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="facility_Associated Contacts" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_facility_addresses/${dynamicFacilityId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;998&quot;,&quot;layout_id&quot;:6583,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;deb70e65-b3b5-48d6-ae13-e0b6d22c8dd2&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;record_status&quot;,&quot;contact_key&quot;,&quot;first_name&quot;,&quot;last_name&quot;,&quot;contact_type&quot;,&quot;created_by&quot;,&quot;created_at&quot;,&quot;modified_by&quot;,&quot;modified_at&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+                <stringProp name="RandomTimer.range">4226.8</stringProp>
+                <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ContactlayoutId" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">ContactlayoutId</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$.[:].list_view_layout_id</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">Not Found</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="facility_Associated Provider" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/c_providers/${dynamicFacilityId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;4&quot;,&quot;layout_id&quot;:6636,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;e604b204-7de3-49f4-83f9-b823048ae561&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;record_status&quot;,&quot;provider_key&quot;,&quot;first_name&quot;,&quot;last_name&quot;,&quot;specialty&quot;,&quot;npi&quot;,&quot;tax_id&quot;,&quot;state_license_number&quot;,&quot;dea_number&quot;,&quot;created_by&quot;,&quot;created_at&quot;,&quot;modified_by&quot;,&quot;modified_at&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+                <stringProp name="RandomTimer.range">4226.8</stringProp>
+                <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ContactlayoutId" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">ContactlayoutId</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$.[:].list_view_layout_id</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">Not Found</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="facility_Associated Cases" enabled="false">
+              <stringProp name="HTTPSampler.port">0</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.path">api/entity-management/v3/entity-data/get/facility_cases_view/${dynamicFacilityId}/entities?unassigned=false</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;entity_id&quot;:&quot;1808&quot;,&quot;layout_id&quot;:6633,&quot;unassigned&quot;:false,&quot;relation_identifier&quot;:&quot;3dfb0dcf-c26a-4c73-aeef-2896e7126911&quot;,&quot;page&quot;:0,&quot;size&quot;:25,&quot;filters&quot;:[{&quot;criteria&quot;:[{&quot;direction&quot;:&quot;ASC&quot;,&quot;field_name&quot;:&quot;record_status&quot;,&quot;operation&quot;:&quot;LIKE&quot;,&quot;values&quot;:[]}]}],&quot;select&quot;:[&quot;case_id&quot;,&quot;product_name&quot;,&quot;overall_status&quot;,&quot;case_status&quot;,&quot;service_type&quot;,&quot;sub_service_type&quot;,&quot;outcome&quot;,&quot;outcome_reason&quot;,&quot;case_completion_date&quot;,&quot;user_name&quot;,&quot;patient_name&quot;,&quot;channel&quot;,&quot;parent_case_id&quot;,&quot;case_document_count&quot;,&quot;created_by&quot;,&quot;created_at&quot;,&quot;modified_by&quot;,&quot;modified_at&quot;],&quot;related_entities&quot;:{}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+                <stringProp name="RandomTimer.range">4226.8</stringProp>
+                <stringProp name="ConstantTimer.delay">8453.6</stringProp>
+              </UniformRandomTimer>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="ContactlayoutId" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">ContactlayoutId</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$.[:].list_view_layout_id</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">Not Found</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+          <boolProp name="useGroupName">true</boolProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="Graph Results">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

@@ -1,0 +1,113 @@
+trigger:
+- none
+
+parameters:
+- name: scanType
+  displayName: Type of ZAP scan
+  type: string
+  default: 'baseline'
+  values:
+  - 'baseline'
+  - 'full'
+
+- name: reportTemplate
+  displayName: ZAP Report Template
+  type: string
+  default: 'traditional-html'
+  values:
+  - traditional-html
+  - traditional-json
+  - sarif-json
+  - traditional-pdf
+
+- name: adminUrls
+  displayName: Admin URLs to scan (comma separated)
+  type: string
+  default: "https://qa.app-np.neovance.com/clients,https://qa.app-np.neovance.com/user-management/permission-sets,https://qa.app-np.neovance.com/entity-manager,https://qa.app-np.neovance.com/hcp-portal,https://qa.app-np.neovance.com/case-mapping,https://qa.app-np.neovance.com/correspondence/placeholders,https://qa.app-np.neovance.com/correspondence/static-documents,https://qa.app-np.neovance.com/correspondence/document-management,https://qa.app-np.neovance.com/correspondence/template-management,https://qa.app-np.neovance.com/correspondence/send-manual-communication,https://qa.app-np.neovance.com/correspondence/correspondence-logs,https://qa.app-np.neovance.com/sla-management,https://qa.app-np.neovance.com/consent-configuration,https://qa.app-np.neovance.com/profile-details"
+
+- name: agentUrls
+  displayName: Agent URLs to scan (comma separated)
+  type: string
+  default: "https://qa-agent.app-np.neovance.com/dashboard,https://qa-agent.app-np.neovance.com/entities/2144,https://qa-agent.app-np.neovance.com/my-cases/32/1395/36,https://qa-agent.app-np.neovance.com/my-tasks/1127/1318/37,https://qa-agent.app-np.neovance.com/manage-queue/dynamic-queue/32/1394/207,https://qa-agent.app-np.neovance.com/manage-queue/dynamic-queue/32/1394/2,https://qa-agent.app-np.neovance.com/correspondence/correspondence-logs/outbound/3607,https://qa-agent.app-np.neovance.com/interaction,https://qa-agent.app-np.neovance.com/permission-assignment"
+
+stages:
+- stage: Auth_Login
+  displayName: "Authenticate via Playwright"
+  jobs:
+  - job: PlaywrightLoginAdmin
+    displayName: "Run Playwright login and save session (Admin)"
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: UseNode@1
+      inputs:
+        version: '18.x'
+    - script: |
+        npm install -D @playwright/test
+        npx playwright install --with-deps
+        mkdir -p $(Build.ArtifactStagingDirectory)/auth
+        node playwright-login.js \
+          --url "https://qa.app-np.neovance.com/" \
+          --email "$(QA_ADMIN_EMAIL)" \
+          --password "$(QA_ADMIN_PASSWORD)" \
+          --mfaSecret "$(QA_ADMIN_MFA_SECRET)" \
+          --output "$(Build.ArtifactStagingDirectory)/auth/admin-session.json"
+      displayName: "Run Playwright login (Admin)"
+    - publish: '$(Build.ArtifactStagingDirectory)/auth/admin-session.json'
+      artifact: 'PlaywrightSessionAdmin'
+      displayName: 'Publish Admin session.json'
+
+  - job: PlaywrightLoginAgent
+    displayName: "Run Playwright login and save session (Agent)"
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: UseNode@1
+      inputs:
+        version: '18.x'
+    - script: |
+        npm install
+        npx playwright install --with-deps
+        mkdir -p $(Build.ArtifactStagingDirectory)/auth
+        node playwright-login.js \
+          --url "https://qa-agent.app-np.neovance.com/" \
+          --email "$(QA_AGENT_EMAIL)" \
+          --password "$(QA_AGENT_PASSWORD)" \
+          --mfaSecret "$(QA_AGENT_MFA_SECRET)" \
+          --output "$(Build.ArtifactStagingDirectory)/auth/agent-session.json"
+      displayName: "Run Playwright login (Agent)"
+    - publish: '$(Build.ArtifactStagingDirectory)/auth/agent-session.json'
+      artifact: 'PlaywrightSessionAgent'
+      displayName: 'Publish Agent session.json'
+
+- stage: ZAP_Scan_Stage
+  displayName: "Run ZAP Scan"
+  dependsOn: Auth_Login
+  jobs:
+  - job: AdminScan
+    displayName: "ZAP Scan - Admin"
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - download: current
+      artifact: PlaywrightSessionAdmin
+    - template: zap-template.yml
+      parameters:
+        targetUrls: ${{ parameters.adminUrls }}
+        appName: 'admin'
+        scanType: ${{ parameters.scanType }}
+        reportTemplate: ${{ parameters.reportTemplate }}
+
+  - job: AgentScan
+    displayName: "ZAP Scan - Agent"
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - download: current
+      artifact: PlaywrightSessionAgent
+    - template: zap-template.yml
+      parameters:
+        targetUrls: ${{ parameters.agentUrls }}
+        appName: 'agent'
+        scanType: ${{ parameters.scanType }}
+        reportTemplate: ${{ parameters.reportTemplate }}

@@ -1,0 +1,12 @@
+{
+  "name": "zap-auth-login",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "login": "node playwright-login.js"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.48.0",
+    "speakeasy": "^2.0.0"
+  }
+}

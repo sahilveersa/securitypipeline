@@ -1,0 +1,35 @@
+Label,# Samples,Average,Min,Max,Std. Dev.,Error %,Throughput,Received KB/sec,Sent KB/sec,Avg. Bytes
+Search Module:LayoutProvider,100,917,300,2011,328.25,90.000%,.10275,0.53,0.23,5254.7
+Search Module:ListofViewProviders,100,831,322,1344,256.92,90.000%,.10264,0.17,0.26,1692.6
+Search Module:ViewIndividualProviders,250,842,328,1212,259.40,0.000%,.64097,1.20,1.40,1915.2
+Search Module:EntityLayoutProviders,250,1330,349,4828,391.85,0.000%,.64154,53.00,1.40,84600.0
+Search Module:Provider Contact Information,250,844,311,1815,253.20,0.000%,.63825,1.27,1.67,2040.6
+Search Module:Associated Healthcare Facilities,250,812,312,1448,268.22,0.000%,.63669,0.90,1.65,1451.4
+Search Module:Associated Cases,250,880,314,16023,996.00,0.000%,.63719,0.90,1.66,1451.4
+Search Module:Paginated Call,100,888,514,1599,243.94,90.000%,.16692,0.83,0.37,5116.0
+Search Module:List patient Dynamic,100,860,304,1175,252.15,90.000%,.16701,0.37,0.44,2263.7
+Search Module:View patient Dynamic,250,766,310,1175,260.96,0.000%,1.22898,2.17,2.69,1810.0
+Search Module:ICD 10 Accordian,250,758,300,1203,254.05,0.000%,1.22774,2.11,3.35,1757.7
+Search Module:Patient Therapies Accordian,250,783,305,1934,271.36,0.000%,1.22801,1.88,3.55,1564.6
+Search Module:patient cases Accordian,250,1085,532,1967,290.26,0.000%,1.22274,11.13,3.37,9324.9
+Search Module:Patient Address Accordian,250,802,301,1224,259.28,0.000%,1.22534,2.27,3.33,1898.6
+Search Module:Patient Contact Accordian,250,753,300,1153,261.86,0.000%,1.22392,2.35,3.27,1965.0
+Search Module:Patient Consent Accordian,250,762,310,1361,256.54,0.000%,1.22500,2.63,3.38,2194.5
+Search Module:Associated Contacts Accordian,500,775,292,1290,261.41,37.800%,1.15011,1.34,3.03,1191.7
+Search Module:Insurance Policy Accordian,250,818,354,1367,270.84,0.000%,1.22168,2.63,3.42,2202.3
+Search Module:Payer List,100,841,320,1176,246.76,90.000%,.23783,0.26,0.58,1116.3
+Search Module:View Payer,250,836,314,1232,252.27,0.000%,2.09777,2.67,4.59,1303.2
+Search Module:Payer Phone and Fax Accordian,250,850,320,1212,239.15,0.000%,2.08950,2.64,5.47,1294.0
+Search Module:Associated Plans Accordian,250,851,325,1393,255.56,0.000%,2.08490,4.60,5.79,2259.9
+Search Module:Plan Phone and Fax Accordian,250,1091,534,1781,260.68,0.000%,2.08158,3.51,5.73,1727.9
+Search Module:Plan List,100,840,292,1176,220.21,90.000%,.30443,0.35,0.76,1166.3
+Search Module:View Plans,250,831,304,2081,272.98,0.000%,3.59407,5.01,7.86,1426.4
+Search Module:Phone and Fax Accordian,500,787,276,1357,255.01,36.600%,2.99828,3.18,7.86,1086.9
+Search Module:Organizations List,100,790,303,1162,242.68,90.000%,.34437,0.47,0.88,1390.4
+Search Module:View Organizations,250,767,283,1325,263.60,73.200%,1.95774,1.56,4.29,815.1
+Search Module:Organization Addresses Accordian,250,809,266,1575,258.41,74.000%,1.95441,1.59,5.31,832.3
+Search Module:Associated Cases Accordian,250,798,281,1820,273.60,76.000%,1.95701,1.48,5.36,773.4
+Search Module:Contacts List,100,801,297,1135,230.64,100.000%,.53125,0.32,1.35,609.0
+Search Module:LayoutHEalthCareFacility,100,886,319,1176,212.78,100.000%,.53237,0.32,1.19,609.0
+Search Module:ListofFacility,100,847,304,1495,242.93,100.000%,.52653,0.31,1.35,609.0
+TOTAL,7250,848,266,16023,342.09,25.655%,7.33566,33.87,18.76,4727.5

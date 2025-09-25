@@ -7,7 +7,6 @@ parameters:
     type: string
   - name: reportTemplate
     type: string
-
 steps:
 - script: |
     echo "Starting ZAP Scan for ${{ parameters.appName }}..."

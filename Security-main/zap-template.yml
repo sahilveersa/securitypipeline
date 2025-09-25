@@ -149,7 +149,7 @@ steps:
 
       echo "ZAP scan finished."
       ls -la
-    displayName: "Run ZAP Scan with Auth (Debug)"
+    displayName: "Run ZAP Scan with Auth"
 
   - publish: '$(Build.ArtifactStagingDirectory)/zap-reports'
     artifact: 'ZAP_Reports_${{ parameters.appName }}'

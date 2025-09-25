@@ -192,54 +192,53 @@ stages:
     steps:
     - download: current
       artifact: PlaywrightSessionAdmin
-    - bash: |
-        echo "=== DEBUG: Variable Resolution ==="
-        echo "Environment parameter: ${{ parameters.environment }}"
-        echo "Base URL variable name: ${{ parameters.environment }}_admin_base"
-        echo "Base URL value: $baseUrl"
-        echo "Admin paths: $paths"
-        echo "================================="
+    
+    - powershell: |
+        Write-Host "=== DEBUG: Variable Resolution ==="
+        Write-Host "Environment parameter: ${{ parameters.environment }}"
+        Write-Host "Base URL: $(baseUrl)"
+        Write-Host "Admin paths: $(paths)"
+        Write-Host "================================="
         
-        FULL_URLS=""
+        $baseUrl = "$(baseUrl)"
+        $paths = "$(paths)"
         
-        # Split paths by comma and build URLs
-        IFS=',' read -ra path_array <<< "$paths"
-        echo "Number of paths found: ${#path_array[@]}"
+        $pathArray = $paths -split ','
+        $fullUrls = @()
         
-        for path in "${path_array[@]}"; do
-          path=$(echo "$path" | xargs)   # trim spaces
-          echo "Processing path: '$path'"
-          if [ -n "$path" ]; then
-            if [ -n "$FULL_URLS" ]; then
-              FULL_URLS="$FULL_URLS,"
-            fi
-            full_url="$baseUrl$path"
-            FULL_URLS="$FULL_URLS$full_url"
-            echo "  Added: $full_url"
-          fi
-        done
-
-        echo "=== FINAL RESULT ==="
-        echo "FULL_URLS=$FULL_URLS"
-        echo "===================="
+        Write-Host "Number of paths found: $($pathArray.Count)"
         
-        # Validate that we have URLs
-        if [ -z "$FULL_URLS" ]; then
-          echo "ERROR: No URLs were generated!"
-          exit 1
-        fi
+        foreach ($path in $pathArray) {
+            $trimmedPath = $path.Trim()
+            Write-Host "Processing path: '$trimmedPath'"
+            if ($trimmedPath -ne "") {
+                $fullUrl = $baseUrl + $trimmedPath
+                $fullUrls += $fullUrl
+                Write-Host "  Added: $fullUrl"
+            }
+        }
         
-        # Set variable for next step - ADO specific syntax
-        echo "##vso[task.setvariable variable=ADMIN_URLS;isOutput=true]$FULL_URLS"
+        $fullUrlsString = $fullUrls -join ','
+        Write-Host "=== FINAL RESULT ==="
+        Write-Host "ADMIN_URLS=$fullUrlsString"
+        Write-Host "===================="
+        
+        if ([string]::IsNullOrEmpty($fullUrlsString)) {
+            Write-Error "ERROR: No URLs were generated!"
+            exit 1
+        }
+        
+        Write-Host "##vso[task.setvariable variable=ADMIN_URLS;isOutput=true]$fullUrlsString"
       env:
         baseUrl: $[ variables['${{ parameters.environment }}_admin_base'] ]
         paths: $(admin_paths)
       name: SetAdminUrls
+      displayName: "Build Admin URLs"
     
-    - bash: |
-        echo "=== VERIFICATION STEP ==="
-        echo "ADMIN_URLS variable: $(SetAdminUrls.ADMIN_URLS)"
-        echo "========================="
+    - powershell: |
+        Write-Host "=== VERIFICATION STEP ==="
+        Write-Host "ADMIN_URLS variable: $(SetAdminUrls.ADMIN_URLS)"
+        Write-Host "========================="
       displayName: "Verify URLs Variable"
     
     - template: zap-template.yml
@@ -256,54 +255,53 @@ stages:
     steps:
     - download: current
       artifact: PlaywrightSessionAgent
-    - bash: |
-        echo "=== DEBUG: Variable Resolution ==="
-        echo "Environment parameter: ${{ parameters.environment }}"
-        echo "Base URL variable name: ${{ parameters.environment }}_agent_base"
-        echo "Base URL value: $baseUrl"
-        echo "Agent paths: $paths"
-        echo "================================="
+    
+    - powershell: |
+        Write-Host "=== DEBUG: Variable Resolution ==="
+        Write-Host "Environment parameter: ${{ parameters.environment }}"
+        Write-Host "Base URL: $(baseUrl)"
+        Write-Host "Agent paths: $(paths)"
+        Write-Host "================================="
         
-        FULL_URLS=""
-
-        # Split paths by comma and build URLs
-        IFS=',' read -ra path_array <<< "$paths"
-        echo "Number of paths found: ${#path_array[@]}"
+        $baseUrl = "$(baseUrl)"
+        $paths = "$(paths)"
         
-        for path in "${path_array[@]}"; do
-          path=$(echo "$path" | xargs)   # trim spaces
-          echo "Processing path: '$path'"
-          if [ -n "$path" ]; then
-            if [ -n "$FULL_URLS" ]; then
-              FULL_URLS="$FULL_URLS,"
-            fi
-            full_url="$baseUrl$path"
-            FULL_URLS="$FULL_URLS$full_url"
-            echo "  Added: $full_url"
-          fi
-        done
-
-        echo "=== FINAL RESULT ==="
-        echo "FULL_URLS=$FULL_URLS"
-        echo "===================="
+        $pathArray = $paths -split ','
+        $fullUrls = @()
         
-        # Validate that we have URLs
-        if [ -z "$FULL_URLS" ]; then
-          echo "ERROR: No URLs were generated!"
-          exit 1
-        fi
+        Write-Host "Number of paths found: $($pathArray.Count)"
         
-        # Set variable for next step - ADO specific syntax
-        echo "##vso[task.setvariable variable=AGENT_URLS;isOutput=true]$FULL_URLS"
+        foreach ($path in $pathArray) {
+            $trimmedPath = $path.Trim()
+            Write-Host "Processing path: '$trimmedPath'"
+            if ($trimmedPath -ne "") {
+                $fullUrl = $baseUrl + $trimmedPath
+                $fullUrls += $fullUrl
+                Write-Host "  Added: $fullUrl"
+            }
+        }
+        
+        $fullUrlsString = $fullUrls -join ','
+        Write-Host "=== FINAL RESULT ==="
+        Write-Host "AGENT_URLS=$fullUrlsString"
+        Write-Host "===================="
+        
+        if ([string]::IsNullOrEmpty($fullUrlsString)) {
+            Write-Error "ERROR: No URLs were generated!"
+            exit 1
+        }
+        
+        Write-Host "##vso[task.setvariable variable=AGENT_URLS;isOutput=true]$fullUrlsString"
       env:
         baseUrl: $[ variables['${{ parameters.environment }}_agent_base'] ]
         paths: $(agent_paths)
       name: SetAgentUrls
+      displayName: "Build Agent URLs"
     
-    - bash: |
-        echo "=== VERIFICATION STEP ==="
-        echo "AGENT_URLS variable: $(SetAgentUrls.AGENT_URLS)"
-        echo "========================="
+    - powershell: |
+        Write-Host "=== VERIFICATION STEP ==="
+        Write-Host "AGENT_URLS variable: $(SetAgentUrls.AGENT_URLS)"
+        Write-Host "========================="
       displayName: "Verify URLs Variable"
     
     - template: zap-template.yml

@@ -83,21 +83,44 @@ stages:
         npx playwright install --with-deps
         mkdir -p $(Build.ArtifactStagingDirectory)/auth
         
-        # Set environment variables based on selected environment
-        ENV_NAME="$ENVIRONMENT"
-        ADMIN_EMAIL="$${ENV_NAME}_ADMIN_EMAIL"
-        ADMIN_PASSWORD="$${ENV_NAME}_ADMIN_PASSWORD"
-        ADMIN_MFA_SECRET="$${ENV_NAME}_ADMIN_MFA_SECRET"
-        BASE_URL="$${ENV_NAME}_admin_base"
+        # Get base URL for selected environment
+        if [ "$ENVIRONMENT" = "dev" ]; then
+          BASE_URL="$(dev_admin_base)"
+          ADMIN_EMAIL="$(dev_ADMIN_EMAIL)"
+          ADMIN_PASSWORD="$(dev_ADMIN_PASSWORD)"
+          ADMIN_MFA_SECRET="$(dev_ADMIN_MFA_SECRET)"
+        elif [ "$ENVIRONMENT" = "qa" ]; then
+          BASE_URL="$(qa_admin_base)"
+          ADMIN_EMAIL="$(qa_ADMIN_EMAIL)"
+          ADMIN_PASSWORD="$(qa_ADMIN_PASSWORD)"
+          ADMIN_MFA_SECRET="$(qa_ADMIN_MFA_SECRET)"
+        else
+          BASE_URL="$(uat_admin_base)"
+          ADMIN_EMAIL="$(uat_ADMIN_EMAIL)"
+          ADMIN_PASSWORD="$(uat_ADMIN_PASSWORD)"
+          ADMIN_MFA_SECRET="$(uat_ADMIN_MFA_SECRET)"
+        fi
         
         node playwright-login.js \
-          --url "$(eval echo \$$BASE_URL)" \
-          --email "$(eval echo \$$ADMIN_EMAIL)" \
-          --password "$(eval echo \$$ADMIN_PASSWORD)" \
-          --mfaSecret "$(eval echo \$$ADMIN_MFA_SECRET)" \
+          --url "$BASE_URL" \
+          --email "$ADMIN_EMAIL" \
+          --password "$ADMIN_PASSWORD" \
+          --mfaSecret "$ADMIN_MFA_SECRET" \
           --output "$(Build.ArtifactStagingDirectory)/auth/admin-session.json"
       env:
         ENVIRONMENT: ${{ parameters.environment }}
+        dev_admin_base: $(dev_admin_base)
+        qa_admin_base: $(qa_admin_base)
+        uat_admin_base: $(uat_admin_base)
+        dev_ADMIN_EMAIL: $(dev_ADMIN_EMAIL)
+        dev_ADMIN_PASSWORD: $(dev_ADMIN_PASSWORD)
+        dev_ADMIN_MFA_SECRET: $(dev_ADMIN_MFA_SECRET)
+        qa_ADMIN_EMAIL: $(qa_ADMIN_EMAIL)
+        qa_ADMIN_PASSWORD: $(qa_ADMIN_PASSWORD)
+        qa_ADMIN_MFA_SECRET: $(qa_ADMIN_MFA_SECRET)
+        uat_ADMIN_EMAIL: $(uat_ADMIN_EMAIL)
+        uat_ADMIN_PASSWORD: $(uat_ADMIN_PASSWORD)
+        uat_ADMIN_MFA_SECRET: $(uat_ADMIN_MFA_SECRET)
       displayName: "Run Playwright login (Admin)"
     - publish: '$(Build.ArtifactStagingDirectory)/auth/admin-session.json'
       artifact: 'PlaywrightSessionAdmin'
@@ -116,21 +139,44 @@ stages:
         npx playwright install --with-deps
         mkdir -p $(Build.ArtifactStagingDirectory)/auth
         
-        # Set environment variables based on selected environment
-        ENV_NAME="$ENVIRONMENT"
-        AGENT_EMAIL="$${ENV_NAME}_AGENT_EMAIL"
-        AGENT_PASSWORD="$${ENV_NAME}_AGENT_PASSWORD"
-        AGENT_MFA_SECRET="$${ENV_NAME}_AGENT_MFA_SECRET"
-        BASE_URL="$${ENV_NAME}_agent_base"
+        # Get base URL for selected environment
+        if [ "$ENVIRONMENT" = "dev" ]; then
+          BASE_URL="$(dev_agent_base)"
+          AGENT_EMAIL="$(dev_AGENT_EMAIL)"
+          AGENT_PASSWORD="$(dev_AGENT_PASSWORD)"
+          AGENT_MFA_SECRET="$(dev_AGENT_MFA_SECRET)"
+        elif [ "$ENVIRONMENT" = "qa" ]; then
+          BASE_URL="$(qa_agent_base)"
+          AGENT_EMAIL="$(qa_AGENT_EMAIL)"
+          AGENT_PASSWORD="$(qa_AGENT_PASSWORD)"
+          AGENT_MFA_SECRET="$(qa_AGENT_MFA_SECRET)"
+        else
+          BASE_URL="$(uat_agent_base)"
+          AGENT_EMAIL="$(uat_AGENT_EMAIL)"
+          AGENT_PASSWORD="$(uat_AGENT_PASSWORD)"
+          AGENT_MFA_SECRET="$(uat_AGENT_MFA_SECRET)"
+        fi
         
         node playwright-login.js \
-          --url "$(eval echo \$$BASE_URL)" \
-          --email "$(eval echo \$$AGENT_EMAIL)" \
-          --password "$(eval echo \$$AGENT_PASSWORD)" \
-          --mfaSecret "$(eval echo \$$AGENT_MFA_SECRET)" \
+          --url "$BASE_URL" \
+          --email "$AGENT_EMAIL" \
+          --password "$AGENT_PASSWORD" \
+          --mfaSecret "$AGENT_MFA_SECRET" \
           --output "$(Build.ArtifactStagingDirectory)/auth/agent-session.json"
       env:
         ENVIRONMENT: ${{ parameters.environment }}
+        dev_agent_base: $(dev_agent_base)
+        qa_agent_base: $(qa_agent_base)
+        uat_agent_base: $(uat_agent_base)
+        dev_AGENT_EMAIL: $(dev_AGENT_EMAIL)
+        dev_AGENT_PASSWORD: $(dev_AGENT_PASSWORD)
+        dev_AGENT_MFA_SECRET: $(dev_AGENT_MFA_SECRET)
+        qa_AGENT_EMAIL: $(qa_AGENT_EMAIL)
+        qa_AGENT_PASSWORD: $(qa_AGENT_PASSWORD)
+        qa_AGENT_MFA_SECRET: $(qa_AGENT_MFA_SECRET)
+        uat_AGENT_EMAIL: $(uat_AGENT_EMAIL)
+        uat_AGENT_PASSWORD: $(uat_AGENT_PASSWORD)
+        uat_AGENT_MFA_SECRET: $(uat_AGENT_MFA_SECRET)
       displayName: "Run Playwright login (Agent)"
     - publish: '$(Build.ArtifactStagingDirectory)/auth/agent-session.json'
       artifact: 'PlaywrightSessionAgent'

@@ -82,30 +82,30 @@ stages:
         npm install -D @playwright/test
         npx playwright install --with-deps
         mkdir -p $(Build.ArtifactStagingDirectory)/auth
-        
-        # Get base URL for selected environment
+
+        # Pick environment-specific values
         if [ "$ENVIRONMENT" = "dev" ]; then
-          BASE_URL="$(dev_admin_base)"
-          ADMIN_EMAIL="$(dev_ADMIN_EMAIL)"
-          ADMIN_PASSWORD="$(dev_ADMIN_PASSWORD)"
-          ADMIN_MFA_SECRET="$(dev_ADMIN_MFA_SECRET)"
+          BASE_URL=$dev_admin_base
+          EMAIL=$dev_ADMIN_EMAIL
+          PASSWORD=$dev_ADMIN_PASSWORD
+          MFA_SECRET=$dev_ADMIN_MFA_SECRET
         elif [ "$ENVIRONMENT" = "qa" ]; then
-          BASE_URL="$(qa_admin_base)"
-          ADMIN_EMAIL="$(qa_ADMIN_EMAIL)"
-          ADMIN_PASSWORD="$(qa_ADMIN_PASSWORD)"
-          ADMIN_MFA_SECRET="$(qa_ADMIN_MFA_SECRET)"
+          BASE_URL=$qa_admin_base
+          EMAIL=$qa_ADMIN_EMAIL
+          PASSWORD=$qa_ADMIN_PASSWORD
+          MFA_SECRET=$qa_ADMIN_MFA_SECRET
         else
-          BASE_URL="$(uat_admin_base)"
-          ADMIN_EMAIL="$(uat_ADMIN_EMAIL)"
-          ADMIN_PASSWORD="$(uat_ADMIN_PASSWORD)"
-          ADMIN_MFA_SECRET="$(uat_ADMIN_MFA_SECRET)"
+          BASE_URL=$uat_admin_base
+          EMAIL=$uat_ADMIN_EMAIL
+          PASSWORD=$uat_ADMIN_PASSWORD
+          MFA_SECRET=$uat_ADMIN_MFA_SECRET
         fi
-        
+
         node playwright-login.js \
           --url "$BASE_URL" \
-          --email "$ADMIN_EMAIL" \
-          --password "$ADMIN_PASSWORD" \
-          --mfaSecret "$ADMIN_MFA_SECRET" \
+          --email "$EMAIL" \
+          --password "$PASSWORD" \
+          --mfaSecret "$MFA_SECRET" \
           --output "$(Build.ArtifactStagingDirectory)/auth/admin-session.json"
       env:
         ENVIRONMENT: ${{ parameters.environment }}
@@ -138,30 +138,29 @@ stages:
         npm install -D @playwright/test
         npx playwright install --with-deps
         mkdir -p $(Build.ArtifactStagingDirectory)/auth
-        
-        # Get base URL for selected environment
+
         if [ "$ENVIRONMENT" = "dev" ]; then
-          BASE_URL="$(dev_agent_base)"
-          AGENT_EMAIL="$(dev_AGENT_EMAIL)"
-          AGENT_PASSWORD="$(dev_AGENT_PASSWORD)"
-          AGENT_MFA_SECRET="$(dev_AGENT_MFA_SECRET)"
+          BASE_URL=$dev_agent_base
+          EMAIL=$dev_AGENT_EMAIL
+          PASSWORD=$dev_AGENT_PASSWORD
+          MFA_SECRET=$dev_AGENT_MFA_SECRET
         elif [ "$ENVIRONMENT" = "qa" ]; then
-          BASE_URL="$(qa_agent_base)"
-          AGENT_EMAIL="$(qa_AGENT_EMAIL)"
-          AGENT_PASSWORD="$(qa_AGENT_PASSWORD)"
-          AGENT_MFA_SECRET="$(qa_AGENT_MFA_SECRET)"
+          BASE_URL=$qa_agent_base
+          EMAIL=$qa_AGENT_EMAIL
+          PASSWORD=$qa_AGENT_PASSWORD
+          MFA_SECRET=$qa_AGENT_MFA_SECRET
         else
-          BASE_URL="$(uat_agent_base)"
-          AGENT_EMAIL="$(uat_AGENT_EMAIL)"
-          AGENT_PASSWORD="$(uat_AGENT_PASSWORD)"
-          AGENT_MFA_SECRET="$(uat_AGENT_MFA_SECRET)"
+          BASE_URL=$uat_agent_base
+          EMAIL=$uat_AGENT_EMAIL
+          PASSWORD=$uat_AGENT_PASSWORD
+          MFA_SECRET=$uat_AGENT_MFA_SECRET
         fi
-        
+
         node playwright-login.js \
           --url "$BASE_URL" \
-          --email "$AGENT_EMAIL" \
-          --password "$AGENT_PASSWORD" \
-          --mfaSecret "$AGENT_MFA_SECRET" \
+          --email "$EMAIL" \
+          --password "$PASSWORD" \
+          --mfaSecret "$MFA_SECRET" \
           --output "$(Build.ArtifactStagingDirectory)/auth/agent-session.json"
       env:
         ENVIRONMENT: ${{ parameters.environment }}
@@ -188,15 +187,12 @@ stages:
   jobs:
   - job: AdminScan
     displayName: "ZAP Scan - Admin"
-    variables:
-      baseUrl: $(${{ parameters.environment }}_admin_base)
     pool:
       vmImage: 'ubuntu-latest'
     steps:
     - download: current
       artifact: PlaywrightSessionAdmin
     - bash: |
-        # Combine base URL with paths
         FULL_URLS=""
         while IFS= read -r path; do
           path=$(echo "$path" | xargs)
@@ -204,34 +200,45 @@ stages:
             if [ -n "$FULL_URLS" ]; then
               FULL_URLS="$FULL_URLS,"
             fi
-            FULL_URLS="$FULL_URLS$(baseUrl)$path"
+            FULL_URLS="$FULL_URLS${baseUrl}$path"
           fi
-        done <<< "$(echo "$(admin_paths)" | tr ',' '\n')"
+        done <<< "$(echo "$admin_paths" | tr ',' '\n')"
         echo "##vso[task.setvariable variable=FULL_URLS]$FULL_URLS"
-      name: SetUrls
+      env:
+        baseUrl: $[ variables['${{ parameters.environment }}_admin_base'] ]
+        admin_paths: $(admin_paths)
     - template: zap-template.yml
       parameters:
-        targetUrls: $(SetUrls.FULL_URLS)
+        targetUrls: $(FULL_URLS)
         appName: 'admin'
         scanType: ${{ parameters.scanType }}
         reportTemplate: ${{ parameters.reportTemplate }}
 
   - job: AgentScan
     displayName: "ZAP Scan - Agent"
-    variables:
-      baseUrl: $(${{ parameters.environment }}_agent_base)
     pool:
       vmImage: 'ubuntu-latest'
     steps:
     - download: current
       artifact: PlaywrightSessionAgent
     - bash: |
-        # Combine base URL with paths
-        FULL_URLS=$(echo "$(agent_paths)" | tr ',' '\n' | sed 's/^[ \t]*//' | sed "s|^|$(baseUrl)|" | tr '\n' ',' | sed 's/,$//')
-      name: SetUrls
+        FULL_URLS=""
+        while IFS= read -r path; do
+          path=$(echo "$path" | xargs)
+          if [ -n "$path" ]; then
+            if [ -n "$FULL_URLS" ]; then
+              FULL_URLS="$FULL_URLS,"
+            fi
+            FULL_URLS="$FULL_URLS${baseUrl}$path"
+          fi
+        done <<< "$(echo "$agent_paths" | tr ',' '\n')"
+        echo "##vso[task.setvariable variable=FULL_URLS]$FULL_URLS"
+      env:
+        baseUrl: $[ variables['${{ parameters.environment }}_agent_base'] ]
+        agent_paths: $(agent_paths)
     - template: zap-template.yml
       parameters:
-        targetUrls: $(SetUrls.FULL_URLS)
+        targetUrls: $(FULL_URLS)
         appName: 'agent'
         scanType: ${{ parameters.scanType }}
         reportTemplate: ${{ parameters.reportTemplate }}

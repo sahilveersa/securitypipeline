@@ -28,16 +28,14 @@ steps:
           urls:
     EOF
 
-    # Add URLs from parameter to the automation file (comma separated)
     IFS=',' read -ra urls <<< "${{ parameters.targetUrls }}"
     for url in "${urls[@]}"; do
-      url=$(echo "$url" | xargs) # trim whitespace
+      url=$(echo "$url" | xargs)
       if [ -n "$url" ] && [[ "$url" =~ ^https?:// ]]; then
         echo "            - '$url'" >> $AUTOMATION_FILE
       fi
     done
 
-    # Continue with authentication and job configuration
     cat <<'EOF' >> $AUTOMATION_FILE
           authentication:
             method: manual
@@ -52,7 +50,6 @@ steps:
     jobs:
     EOF
 
-    # Add scan jobs based on scan type
     if [ "${{ parameters.scanType }}" == "baseline" ]; then
       cat <<'EOF' >> $AUTOMATION_FILE
       - type: spider
@@ -76,7 +73,6 @@ steps:
     EOF
     fi
 
-    # Always generate JSON report first
     cat <<'EOF' >> $AUTOMATION_FILE
       - type: report
         parameters:
@@ -85,7 +81,6 @@ steps:
           reportFile: 'zap_report_${{ parameters.appName }}_${{ parameters.scanType }}.json'
     EOF
 
-    # Add user-selected report format if different from JSON
     if [ "${{ parameters.reportTemplate }}" != "traditional-json" ]; then
       cat <<'EOF' >> $AUTOMATION_FILE
       - type: report
@@ -99,14 +94,12 @@ steps:
     echo "Generated Automation Plan:"
     cat $AUTOMATION_FILE
 
-    # Copy Playwright session.json into container workspace
     if [ "${{ parameters.appName }}" == "admin" ]; then
       cp $(Pipeline.Workspace)/PlaywrightSessionAdmin/admin-session.json session.json
     else
       cp $(Pipeline.Workspace)/PlaywrightSessionAgent/agent-session.json session.json
     fi
 
-    # Run ZAP with corrected addon installation
     docker run --rm \
       -v $(pwd):/zap/wrk/:rw \
       --user root \

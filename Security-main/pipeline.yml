@@ -194,25 +194,32 @@ stages:
       artifact: PlaywrightSessionAdmin
     - bash: |
         FULL_URLS=""
-        while IFS= read -r path; do
-          path=$(echo "$path" | xargs)
+        echo "Base URL: $baseUrl"
+        echo "Admin paths: $paths"
+
+        for path in $(echo "$paths" | tr ',' '\n'); do
+          path=$(echo "$path" | xargs)   # trim spaces
           if [ -n "$path" ]; then
             if [ -n "$FULL_URLS" ]; then
               FULL_URLS="$FULL_URLS,"
             fi
-            FULL_URLS="$FULL_URLS${baseUrl}$path"
+            FULL_URLS="$FULL_URLS$baseUrl$path"
           fi
-        done <<< "$(echo "$admin_paths" | tr ',' '\n')"
+        done
+
+        echo "Resolved FULL_URLS=$FULL_URLS"
         echo "##vso[task.setvariable variable=FULL_URLS]$FULL_URLS"
       env:
         baseUrl: $[ variables['${{ parameters.environment }}_admin_base'] ]
-        admin_paths: $(admin_paths)
-    - template: zap-template.yml
-      parameters:
-        targetUrls: $(FULL_URLS)
-        appName: 'admin'
-        scanType: ${{ parameters.scanType }}
-        reportTemplate: ${{ parameters.reportTemplate }}
+        paths: $(admin_paths)
+      name: SetAdminUrls
+
+  - template: zap-template.yml
+    parameters:
+      targetUrls: $(FULL_URLS)
+      appName: 'admin'
+      scanType: ${{ parameters.scanType }}
+      reportTemplate: ${{ parameters.reportTemplate }}
 
   - job: AgentScan
     displayName: "ZAP Scan - Agent"
@@ -223,22 +230,30 @@ stages:
       artifact: PlaywrightSessionAgent
     - bash: |
         FULL_URLS=""
-        while IFS= read -r path; do
-          path=$(echo "$path" | xargs)
+        echo "Base URL: $baseUrl"
+        echo "Agent paths: $paths"
+
+        for path in $(echo "$paths" | tr ',' '\n'); do
+          path=$(echo "$path" | xargs)   # trim spaces
           if [ -n "$path" ]; then
             if [ -n "$FULL_URLS" ]; then
               FULL_URLS="$FULL_URLS,"
             fi
-            FULL_URLS="$FULL_URLS${baseUrl}$path"
+            FULL_URLS="$FULL_URLS$baseUrl$path"
           fi
-        done <<< "$(echo "$agent_paths" | tr ',' '\n')"
+        done
+
+        echo "Resolved FULL_URLS=$FULL_URLS"
         echo "##vso[task.setvariable variable=FULL_URLS]$FULL_URLS"
       env:
         baseUrl: $[ variables['${{ parameters.environment }}_agent_base'] ]
-        agent_paths: $(agent_paths)
-    - template: zap-template.yml
-      parameters:
-        targetUrls: $(FULL_URLS)
-        appName: 'agent'
-        scanType: ${{ parameters.scanType }}
-        reportTemplate: ${{ parameters.reportTemplate }}
+        paths: $(agent_paths)
+      name: SetAgentUrls
+
+  - template: zap-template.yml
+    parameters:
+      targetUrls: $(FULL_URLS)
+      appName: 'agent'
+      scanType: ${{ parameters.scanType }}
+      reportTemplate: ${{ parameters.reportTemplate }}
+

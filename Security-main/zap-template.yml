@@ -20,7 +20,7 @@ steps:
     # ========================================================================
     # ZAP Automation Framework config
     # ========================================================================
-    cat <<'EOF' > $AUTOMATION_FILE
+    cat <<EOF > $AUTOMATION_FILE
     env:
       contexts:
         - name: '${{ parameters.appName }}'
@@ -35,7 +35,7 @@ steps:
       fi
     done
 
-    cat <<'EOF' >> $AUTOMATION_FILE
+    cat <<EOF >> $AUTOMATION_FILE
           authentication:
             method: manual
           users:
@@ -50,7 +50,7 @@ steps:
     EOF
 
     if [ "${{ parameters.scanType }}" == "baseline" ]; then
-      cat <<'EOF' >> $AUTOMATION_FILE
+      cat <<EOF >> $AUTOMATION_FILE
       - type: spider
         parameters:
           context: '${{ parameters.appName }}'
@@ -59,7 +59,7 @@ steps:
       - type: passiveScan-wait
     EOF
     else
-      cat <<'EOF' >> $AUTOMATION_FILE
+      cat <<EOF >> $AUTOMATION_FILE
       - type: spider
         parameters:
           context: '${{ parameters.appName }}'
@@ -72,7 +72,7 @@ steps:
     EOF
     fi
 
-    cat <<'EOF' >> $AUTOMATION_FILE
+    cat <<EOF >> $AUTOMATION_FILE
       - type: report
         parameters:
           template: 'traditional-json'
@@ -81,7 +81,7 @@ steps:
     EOF
 
     if [ "${{ parameters.reportTemplate }}" != "traditional-json" ]; then
-      cat <<'EOF' >> $AUTOMATION_FILE
+      cat <<EOF >> $AUTOMATION_FILE
       - type: report
         parameters:
           template: '${{ parameters.reportTemplate }}'

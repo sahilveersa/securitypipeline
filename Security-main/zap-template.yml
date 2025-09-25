@@ -18,80 +18,82 @@ steps:
     cd $ARTIFACT_DIR
     AUTOMATION_FILE="automation.yaml"
 
-    # Create automation file
-    cat <<EOF > $AUTOMATION_FILE
-env:
-  contexts:
-    - name: '${{ parameters.appName }}'
-      urls:
-EOF
+    # ========================================================================
+    # ZAP Automation Framework config
+    # ========================================================================
+    cat <<'EOF' > $AUTOMATION_FILE
+    env:
+      contexts:
+        - name: '${{ parameters.appName }}'
+          urls:
+    EOF
 
     # Add URLs from parameter to the automation file (comma separated)
-    IFS=',' read -ra URLS <<< "${{ parameters.targetUrls }}"
-    for url in "${URLS[@]}"; do
-      # Clean the URL and add it to the file
-      cleaned_url=$(echo "$url" | xargs)
-      if [ -n "$cleaned_url" ]; then
-        echo "        - '$cleaned_url'" >> $AUTOMATION_FILE
+    IFS=',' read -ra urls <<< "${{ parameters.targetUrls }}"
+    for url in "${urls[@]}"; do
+      url=$(echo "$url" | xargs) # trim whitespace
+      if [ -n "$url" ] && [[ "$url" =~ ^https?:// ]]; then
+        echo "            - '$url'" >> $AUTOMATION_FILE
       fi
     done
 
-    # Add authentication and other configurations
-    cat <<EOF >> $AUTOMATION_FILE
-      authentication:
-        method: manual
-      users:
-        - name: 'ci-user'
-          credentials:
-            session: '/zap/wrk/session.json'
-  parameters:
-    failOnError: true
-    failOnWarning: false
-    progressToStdout: true
-jobs:
-EOF
+    # Continue with authentication and job configuration
+    cat <<'EOF' >> $AUTOMATION_FILE
+          authentication:
+            method: manual
+          users:
+            - name: 'ci-user'
+              credentials:
+                session: '/zap/wrk/session.json'
+      parameters:
+        failOnError: true
+        failOnWarning: false
+        progressToStdout: true
+    jobs:
+    EOF
 
     # Add scan jobs based on scan type
     if [ "${{ parameters.scanType }}" == "baseline" ]; then
-      cat <<EOF >> $AUTOMATION_FILE
-  - type: spider
-    parameters:
-      context: '${{ parameters.appName }}'
-      user: 'ci-user'
-      maxDuration: 5
-  - type: passiveScan-wait
-EOF
+      cat <<'EOF' >> $AUTOMATION_FILE
+      - type: spider
+        parameters:
+          context: '${{ parameters.appName }}'
+          user: 'ci-user'
+          maxDuration: 5
+      - type: passiveScan-wait
+    EOF
     else
-      cat <<EOF >> $AUTOMATION_FILE
-  - type: spider
-    parameters:
-      context: '${{ parameters.appName }}'
-      user: 'ci-user'
-  - type: passiveScan-wait
-  - type: activeScan
-    parameters:
-      context: '${{ parameters.appName }}'
-      user: 'ci-user'
-EOF
+      cat <<'EOF' >> $AUTOMATION_FILE
+      - type: spider
+        parameters:
+          context: '${{ parameters.appName }}'
+          user: 'ci-user'
+      - type: passiveScan-wait
+      - type: activeScan
+        parameters:
+          context: '${{ parameters.appName }}'
+          user: 'ci-user'
+    EOF
     fi
 
-    # Add reports configuration
-    cat <<EOF >> $AUTOMATION_FILE
-  - type: report
-    parameters:
-      template: 'traditional-json'
-      reportDir: '/zap/wrk/'
-      reportFile: 'zap_report_${{ parameters.appName }}_${{ parameters.scanType }}.json'
-EOF
+    # Always generate JSON report first
+    cat <<'EOF' >> $AUTOMATION_FILE
+      - type: report
+        parameters:
+          template: 'traditional-json'
+          reportDir: '/zap/wrk/'
+          reportFile: 'zap_report_${{ parameters.appName }}_${{ parameters.scanType }}.json'
+    EOF
 
+    # Add user-selected report format if different from JSON
     if [ "${{ parameters.reportTemplate }}" != "traditional-json" ]; then
-      cat <<EOF >> $AUTOMATION_FILE
-  - type: report
-    parameters:
-      template: '${{ parameters.reportTemplate }}'
-      reportDir: '/zap/wrk/'
-      reportFile: 'zap_report_${{ parameters.appName }}_${{ parameters.scanType }}'
-EOF
+      cat <<'EOF' >> $AUTOMATION_FILE
+      - type: report
+        parameters:
+          template: '${{ parameters.reportTemplate }}'
+          reportDir: '/zap/wrk/'
+          reportFile: 'zap_report_${{ parameters.appName }}_${{ parameters.scanType }}'
+    EOF
     fi
 
     echo "Generated Automation Plan:"
@@ -104,7 +106,7 @@ EOF
       cp $(Pipeline.Workspace)/PlaywrightSessionAgent/agent-session.json session.json
     fi
 
-    # Run ZAP scan
+    # Run ZAP with corrected addon installation
     docker run --rm \
       -v $(pwd):/zap/wrk/:rw \
       --user root \

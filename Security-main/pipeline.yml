@@ -57,12 +57,11 @@ variables:
 
   agent_paths: >
     /dashboard,
-    /entities/2144,
-    /my-cases/32/1395/36,
-    /my-tasks/1127/1318/37,
-    /manage-queue/dynamic-queue/32/1394/207,
-    /manage-queue/dynamic-queue/32/1394/2,
-    /correspondence/correspondence-logs/outbound/3607,
+    /entities/,
+    /my-cases/,
+    /my-tasks/,
+    /manage-queue/dynamic-queue/,
+    /correspondence/correspondence-logs/outbound/,
     /interaction,
     /permission-assignment
 

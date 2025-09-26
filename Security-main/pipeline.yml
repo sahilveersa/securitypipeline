@@ -7,7 +7,6 @@ parameters:
   type: string
   default: 'qa'
   values:
-  - 'dev'
   - 'qa'
   - 'uat'
 
